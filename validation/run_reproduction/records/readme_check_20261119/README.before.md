@@ -1,0 +1,248 @@
+# NMRReasoner
+
+**English** | 简体中文：[README.zh-CN.md](README.zh-CN.md)
+
+Infer molecular structures (SMILES) from molecular formulas and NMR measurements, or predict ¹H / ¹³C chemical shifts from structures. Includes data loading, fine-tuning, inference, evaluation, and candidate voting.
+
+## 1. Download data, code, and model weights
+
+The GitHub repository contains code only; the datasets and model files under `data/` and `weight/` are not included. Download them separately from the links below and extract them to any local directory.
+
+- **Data:** The datasets supporting this study are available on Zenodo at: <https://doi.org/10.5281/zenodo.24297239>
+- **Code:** Training and inference code: <https://github.com/WJmodels/NMRReasoner>
+- **Model weights:** Archived on Zenodo:
+  - <https://doi.org/10.5281/zenodo.18463435>
+  - <https://doi.org/10.5281/zenodo.18463408>
+  - <https://doi.org/10.5281/zenodo.18512951>
+  - <https://doi.org/10.5281/zenodo.18512949>
+  - <https://doi.org/10.5281/zenodo.18512943>
+  - <https://doi.org/10.5281/zenodo.18512922>
+
+The layout below illustrates the directory roles; these names and locations are not required. Replace every `/path/to/...` placeholder in the commands with your actual path. Quote paths containing spaces:
+
+```text
+/path/to/resources/
+├── se_train_arrow/       # *.arrow
+├── se_test_arrow/        # *.arrow
+├── ncsp_train_arrow/     # *.arrow
+├── ncsp_test_arrow/      # *.arrow
+├── se_model/            # config.json, tokenizer files, model weights
+└── ncsp_model/          # config.json, tokenizer files, model weights
+```
+
+If the data and weights are already available locally, proceed to environment setup.
+
+## 2. Environment and quick start
+
+Run the following commands from the **NMRReasoner directory**. For standard Transformers inference, activate your Python environment and install:
+
+```bash
+python -m pip install -r requirements.txt
+python test.py inspect --data "/path/to/se_test_arrow" --model "/path/to/se_model"
+CUDA_VISIBLE_DEVICES=0 python test.py --data "/path/to/se_test_arrow" --model "/path/to/se_model" --output runs/demo
+```
+
+[experiments/local.json](experiments/local.json) and [experiments/shift_prediction.json](experiments/shift_prediction.json) provide example SE and NCSP inference settings. Their data/model paths are placeholders; pass actual directories with `--data` and `--model`. For NCSP:
+
+```bash
+python test.py inspect --config experiments/shift_prediction.json --data "/path/to/ncsp_test_arrow" --model "/path/to/ncsp_model"
+CUDA_VISIBLE_DEVICES=0 python test.py --config experiments/shift_prediction.json --data "/path/to/ncsp_test_arrow" --model "/path/to/ncsp_model" --output runs/ncsp_demo
+```
+
+Both presets select the first 3 examples. `MultiNMR-200k` and `MultiNMR-2.2M` identify dataset families, not test-split row counts; use `inspect` to see the actual count.
+
+`inspect` checks the data schema, identifies the checkpoint, and prints the first question; it does not load model weights onto the GPU. The inference command loads the full checkpoint and processes the **first 3 examples**, with up to **5000 new tokens per example**.
+
+Training requires Unsloth, TRL, PEFT, and their dependencies. For training or vLLM, create the environment defined in [runtime.yml](runtime.yml):
+
+```bash
+conda env create -f runtime.yml
+conda activate nmrreasoner
+```
+
+`requirements.txt` covers Transformers inference; `runtime.yml` includes training and vLLM dependencies.
+
+## 3. Prepare your data
+
+### Use the downloaded datasets
+
+The downloaded datasets are already in Arrow format; no conversion is needed. Point `--data` to the innermost directory containing `*.arrow` files.
+
+| Purpose | Path placeholder |
+| --- | --- |
+| SE training (CoT-1) | `/path/to/se_train_arrow` |
+| SE testing | `/path/to/se_test_arrow` |
+| NCSP training (CoT-1) | `/path/to/ncsp_train_arrow` |
+| NCSP testing | `/path/to/ncsp_test_arrow` |
+
+Select other CoT variants or MultiNMR-2.2M data by changing `--data` to the corresponding directory. Pair SE and NCSP data with their respective model weights. The JSONL conversion below is only needed for your own datasets.
+
+### Required format
+
+Each dataset is a directory containing one or more `*.arrow` shards, with these **string** columns:
+
+| Column | Structure elucidation (`nmr`) | Shift prediction (`nmr_forward`) |
+| --- | --- | --- |
+| `question` | Formula and NMR input text | Structure input text, matching the model's training format |
+| `cot` | Reference reasoning trace | Reference reasoning trace |
+| `answer` | Reference SMILES, e.g. `CCO` | Reference spectrum text containing `Formula`, `13C NMR:`, and `1H NMR:` |
+
+All three columns are required for training, inference, and evaluation. Training uses all three; generation reads `question`, and automatic evaluation uses the references. `cot` may be an empty string if no reference reasoning is available, but reasoning-based evaluation then has no reference trace. Use labeled test data for meaningful metrics.
+
+Keep one task per dataset: task detection uses the **first answer**. Preserve the question format expected by the checkpoint. Do not add `<think>` or `<answer>` wrappers to the stored fields; the training/inference code builds the surrounding template.
+
+The following example is the first record (index 0) in the SE-CoT-1 / MultiNMR-200k training set.
+
+Source file: `SE-CoT-1_MultiNMR_200k_train_arrow/data-00000-of-00001.arrow`. The `cot` field uses structured tags to represent the molecular formula, chemical shifts, and local structural fragments.
+
+Complete JSONL row:
+
+```json
+{"question":"Formula:C8H12O2;FW:140.182;HSQC:[MASK];HMBC:[MASK];COSY:[MASK];13C NMR:[NCP:8]21.5,23.7,31.9,37.5,74.0,74.1,77.5,84.3;1H NMR:[NHP:10](1.47,1,[MASK]),(1.48,1,[MASK]),(1.49,1,[MASK]),(1.51,1,[MASK]),(1.58,1,[MASK]),(1.69,1,[MASK]),(1.96,1,[MASK]),(2.14,1,[MASK]),(2.87,1,[MASK]),(3.09,1,[MASK])","cot":"[Formula]C8H12O2[/Formula][FW]140.182[/FW][NQC][MASK][/NQC][NBC][MASK][/NBC][NCOSY][MASK][/NCOSY][NCP]8[/NCP][CP1]21.5[/CP1][C1]*C(*)(*)CC(*)(*)*[/C1][CP2]23.7[/CP2][C2]*C(*)(*)CC(*)(*)*[/C2][CP3]31.9[/CP3][C3]*C(*)(*)CC(*)(*)*[/C3][CP4]37.5[/CP4][C4]*C(*)(*)CC(*)(*)*[/C4][CP5]74.0[/CP5][C5]*OC(C(*)(*)*)C(*)(*)*[/C5][CP6]74.1[/CP6][C6]*C#C[/C6][CP7]77.5[/CP7][C7]*OC(C#*)(C(*)(*)*)C(*)(*)*[/C7][CP8]84.3[/CP8][C8]*C#CC(*)(*)*[/C8][NHP]10[/NHP][HP1]1.47[/HP1][H1I]1[/H1I][H1]*C(*)(*)CC(*)(*)*[/H1][HP2]1.48[/HP2][H2I]1[/H2I][H2]*C(*)(*)CC(*)(*)*[/H2][HP3]1.49[/HP3][H3I]1[/H3I][H3]*C(*)(*)CC(*)(*)*[/H3][HP4]1.51[/HP4][H4I]1[/H4I][H4]*C(*)(*)CC(*)(*)*[/H4][HP5]1.58[/HP5][H5I]1[/H5I][H5]*C(*)(*)CC(*)(*)*[/H5][HP6]1.69[/HP6][H6I]1[/H6I][H6]*C(*)(*)CC(*)(*)*[/H6][HP7]1.96[/HP7][H7I]1[/H7I][H7]*C(*)(*)CC(*)(*)*[/H7][HP8]2.14[/HP8][H8I]1[/H8I][H8]*C(*)(*)CC(*)(*)*[/H8][HP9]2.87[/HP9][H9I]1[/H9I][H9]*C#C[/H9][HP10]3.09[/HP10][H10I]1[/H10I][H10]*OC(C(*)(*)*)C(*)(*)*[/H10]","answer":"C#CC1(O)CCCCC1O"}
+```
+
+### Convert JSONL to Arrow
+
+For your own JSONL data, prepare `train.jsonl` and `test.jsonl` in one directory, with one complete JSON object per line. Set the input and output directories below before running:
+
+```bash
+python - <<'PY'
+from pathlib import Path
+from datasets import load_dataset
+
+source_dir = Path("/path/to/jsonl")
+output_dir = Path("/path/to/arrow")
+
+for split in ("train", "test"):
+    ds = load_dataset("json", data_files=str(source_dir / f"{split}.jsonl"), split="train")
+    required = {"question", "cot", "answer"}
+    if not len(ds) or not required.issubset(ds.column_names):
+        raise ValueError(f"{split}: need non-empty data with {sorted(required)}")
+    if not all(isinstance(row[key], str) for row in ds for key in required):
+        raise ValueError(f"{split}: question/cot/answer must be strings, not null")
+    ds.save_to_disk(str(output_dir / split))
+    print(split, len(ds), ds.column_names)
+PY
+```
+
+Pass the resulting `/path/to/arrow/train` or `/path/to/arrow/test` directory to `--data`, not the JSONL file or a parent `DatasetDict` directory. Keep training and test examples separate.
+
+## 4. Train
+
+Use a local model directory with configuration, tokenizer, and weights. Set `--model` to a downloaded SE checkpoint for further fine-tuning, or to the original base model to train from that starting point. Training loads local files in offline mode and does not automatically resume optimizer/scheduler state.
+
+```bash
+# Start with a small per-device batch to check your own training setup
+CUDA_VISIBLE_DEVICES=0 python train.py \
+  --data "/path/to/se_train_arrow" \
+  --model "/path/to/se_model" \
+  --epochs 1 --batch-size 1 \
+  --output runs/train_demo
+```
+
+For NCSP training, select its corresponding training split and weights:
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python train.py \
+  --data "/path/to/ncsp_train_arrow" \
+  --model "/path/to/ncsp_model" \
+  --epochs 1 --batch-size 1 --output runs/ncsp_train_demo
+```
+
+`--epochs` defaults to **20** and `--batch-size` to **64 per device**. Adjust them for your experiment and GPU memory. The command above runs one epoch on the entire training dataset.
+
+Training constructs:
+
+```text
+question<think>cot</think><answer>answer</answer><EOS>
+```
+
+Advanced settings live in [experiments/settings.py](experiments/settings.py): maximum sequence length **5000**, gradient accumulation **4**, learning rate **2e-4**, checkpoint interval **8000 steps**, and fine-tuning/LoRA settings. On one GPU, batch size 1 with accumulation 4 gives an effective batch size of 4. `--max-tokens` is an inference option, not the training sequence-length setting.
+
+Outputs are placed under `--output`:
+
+| Path | Content |
+| --- | --- |
+| `outputs/checkpoint-*` | Periodic checkpoints, once the save interval is reached |
+| `final_model/` | Model saved after successful training |
+| `training_logs/` | Terminal logs |
+| `wandb_offline/` | Offline W&B records when available |
+
+Inference requires full model weights plus tokenizer files. An adapter-only directory must first be merged/exported with its base model into a complete model directory; there is no automatic adapter merge in this CLI.
+
+## 5. Run inference
+
+Set `--data` to your SE test split and `--model` to the corresponding full checkpoint directory:
+
+```bash
+python test.py inspect --data "/path/to/se_test_arrow" --model "/path/to/se_model"
+
+CUDA_VISIBLE_DEVICES=0 python test.py \
+  --data "/path/to/se_test_arrow" --model "/path/to/se_model" \
+  --limit 3 --max-tokens 5000 --output runs/custom
+```
+
+Use `--limit 0` for the full dataset. A model parent directory is accepted only when it contains a unique eligible checkpoint; otherwise specify the exact checkpoint directory.
+
+| Option | Meaning |
+| --- | --- |
+| `--limit 3` | First N examples; `0` means all |
+| `--max-tokens 5000` | Maximum newly generated tokens per example |
+| `--beam-width 3` | Generate three beam-search candidates; default is 1 |
+| `--temperature 0` | Greedy/beam decoding; a positive value enables sampling in Transformers |
+| `--top-p 0.95 --top-k 20` | Sampling controls |
+| `--device cuda:0` | Transformers device; `cpu` is also supported |
+| `--backend vllm` | Optional vLLM backend; install its dependencies first |
+
+Select physical GPUs with `CUDA_VISIBLE_DEVICES`. For example, `CUDA_VISIBLE_DEVICES=3` exposes physical GPU 3 as `cuda:0` inside the process. vLLM uses `--tensor-parallel-size` and `--gpu-memory-utilization`; `--device` applies to Transformers. See `python test.py --help` for all options, including shift-decimal formatting.
+
+Each run writes:
+
+| Path | Content |
+| --- | --- |
+| `ground_truth/` | Selected examples, aligned with predictions |
+| `predictions.jsonl` | All candidates: `{"text": ["full generated text", ...]}` |
+| `predictions.txt` | First candidate per example, with embedded newlines escaped |
+| `metrics.json` | Automatic evaluation of the first candidate |
+| `validation.json` | Configuration, resolved paths, runtime, and generation records |
+
+Use a new output directory for each experiment; existing files with the same names are overwritten.
+
+## 6. Evaluate and vote
+
+Recalculate metrics against the saved subset, keeping sample counts and order identical:
+
+```bash
+python test.py evaluate --data runs/custom/ground_truth \
+  --predictions runs/custom/predictions.txt --output runs/custom/rescore.json
+```
+
+For structure predictions, combine candidate JSONL files generated for the **same examples in the same order**. List files from highest to lowest priority:
+
+```bash
+python test.py vote --data runs/custom/ground_truth \
+  --predictions runs/model_a/predictions.jsonl runs/model_b/predictions.jsonl \
+  --topk 10 --workers 1 --output runs/vote
+```
+
+Replace the example paths with your actual runs. Voting results are saved under `runs/vote/consensus/`. `--topk` is the evaluation rank cutoff, distinct from sampling `--top-k`. Voting normalizes SMILES, filters by molecular formula (falling back to SMILES validity if no candidate passes), and resolves equal vote counts by file/candidate priority. It does not support chemical-shift answers.
+
+Structure evaluation ignores chirality by default. Ordinary evaluation averages Tanimoto over valid comparisons; voting averages over all examples. Forward shift errors are reported only for valid examples where both ¹H and ¹³C peak counts match the references under the default filters.
+
+## 7. Configuration and project layout
+
+[experiments/local.json](experiments/local.json) is the default inference settings template. Replace its path placeholders or override them on the CLI; use `--config path/to/preset.json` to replace it. Priority is **CLI > JSON > built-in defaults**. Training uses its CLI arguments and `experiments/settings.py`, not this inference preset.
+
+- JSON `data`/`model` relative paths resolve from the **JSON file's directory**.
+- CLI paths and `output` resolve from the **current working directory**.
+- Absolute paths, `~`, and environment variables in paths are supported.
+
+| Location | Responsibility |
+| --- | --- |
+| `test.py` / `train.py` | Inference/evaluation and training entry points |
+| `nmrreasoner/` | CLI, configuration, assets, backends, services, and records |
+| `spectroscopy/` | Prompts, chemical scoring, and voting algorithms |
+| `experiments/` | Training implementation and settings |
+| `checks/` | Regression checks |
+
+You can also use `run.py` or `python -m nmrreasoner inspect --data /path/to/test_arrow --model /path/to/model`. Add `--debug` for a full traceback. Run checks with `python -m unittest discover -s checks -v`.

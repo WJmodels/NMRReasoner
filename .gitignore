@@ -1,0 +1,23 @@
+__pycache__/
+*.egg-info/
+.venv/
+outputs/
+runs/
+training_logs/
+hf_cache/
+temp/
+
+# Downloaded datasets and model weights are distributed separately.
+/data/
+/weight/
+
+# Interactive uploader is local only.
+/upload_to_github.py
+*.pyc
+
+# Local upload helper and generated assets
+/upload_to_github.py
+/data/
+/weight/
+/runs/
+*.pyc

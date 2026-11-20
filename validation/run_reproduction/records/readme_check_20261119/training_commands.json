@@ -1,0 +1,52 @@
+[
+  {
+    "name": "se_train",
+    "command": [
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/bin/python",
+      "train.py",
+      "--data",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/se/arrow/train8",
+      "--model",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/weight/Structure elucidation/SE-CoT-1_MultiNMR_real200k_weight",
+      "--epochs",
+      "1",
+      "--batch-size",
+      "1",
+      "--output",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/se/training"
+    ],
+    "returncode": 0,
+    "seconds": 114.18307280540466
+  },
+  {
+    "name": "se_trained_inspect",
+    "command": [
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/bin/python",
+      "test.py",
+      "inspect",
+      "--data",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/se/arrow/test",
+      "--model",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/se/training/final_model"
+    ],
+    "returncode": 0,
+    "seconds": 9.030503273010254
+  },
+  {
+    "name": "se_trained_infer",
+    "command": [
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/bin/python",
+      "test.py",
+      "--data",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/se/arrow/test",
+      "--model",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/se/training/final_model",
+      "--limit",
+      "1",
+      "--output",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/se/trained_inference"
+    ],
+    "returncode": 0,
+    "seconds": 43.687222480773926
+  }
+]

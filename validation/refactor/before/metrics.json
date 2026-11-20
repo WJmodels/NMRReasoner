@@ -1,0 +1,10 @@
+{
+  "prediction_validity_rate": 0.6666666666666666,
+  "accuracy": 0.0,
+  "average_tanimoto": 0.21334586466165414,
+  "valid_smiles": 0.6666666666666666,
+  "accuracy_040": 0.0,
+  "accuracy_060": 0.0,
+  "accuracy_080": 0.0,
+  "accuracy_090": 0.0
+}

@@ -1,0 +1,54 @@
+{
+  "project": "NMRReasoner",
+  "task": "nmr",
+  "model": "/media/capios/20TB/lln/project/CLReasoner/test/weight/depth1_real_393034/outputs/checkpoint-73698",
+  "data": "/media/capios/20TB/lln/project/CLReasoner/test/data/40w_solvent_test_22188",
+  "dataset_rows": 22188,
+  "evaluated_rows": 3,
+  "backend": "transformers",
+  "torch": "2.7.0+cu126",
+  "transformers": "4.51.3",
+  "config": {
+    "data": "/media/capios/20TB/lln/project/CLReasoner/test/data/40w_solvent_test_22188",
+    "model": "/media/capios/20TB/lln/project/CLReasoner/test/weight/depth1_real_393034",
+    "output": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/validation/refactor/before",
+    "limit": 3,
+    "max_tokens": 5000,
+    "backend": "transformers",
+    "device": "cuda:0"
+  },
+  "elapsed_seconds": 110.12610292434692,
+  "generation": [
+    {
+      "index": 0,
+      "input_tokens": 131,
+      "generated_tokens": 1066,
+      "has_answer": true,
+      "reached_token_limit": false
+    },
+    {
+      "index": 1,
+      "input_tokens": 318,
+      "generated_tokens": 1371,
+      "has_answer": true,
+      "reached_token_limit": false
+    },
+    {
+      "index": 2,
+      "input_tokens": 125,
+      "generated_tokens": 432,
+      "has_answer": true,
+      "reached_token_limit": false
+    }
+  ],
+  "metrics": {
+    "prediction_validity_rate": 0.6666666666666666,
+    "accuracy": 0.0,
+    "average_tanimoto": 0.21334586466165414,
+    "valid_smiles": 0.6666666666666666,
+    "accuracy_040": 0.0,
+    "accuracy_060": 0.0,
+    "accuracy_080": 0.0,
+    "accuracy_090": 0.0
+  }
+}

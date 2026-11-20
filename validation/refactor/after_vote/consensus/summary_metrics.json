@@ -1,0 +1,15 @@
+{
+  "prediction_validity_rate": 0.6666666666666666,
+  "accuracy": 0.0,
+  "average_tanimoto": 0.14223057644110276,
+  "top1": 0.0,
+  "top2": 0.0,
+  "top3": 0.0,
+  "top4": 0.0,
+  "top5": 0.0,
+  "top6": 0.0,
+  "top7": 0.0,
+  "top8": 0.0,
+  "top9": 0.0,
+  "top10": 0.0
+}

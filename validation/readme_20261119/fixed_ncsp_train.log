@@ -1,0 +1,92 @@
+Start recording terminal output to: ./training_logs/terminal_output_20261119_143811.log
+Using GPU: 3
+Temporary directory set to: ./temp
+HF cache directory set to: ./hf_cache
+/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/experiments/fit.py:70: UserWarning: WARNING: Unsloth should be imported before transformers to ensure all optimizations are applied. Your code may run slower or encounter memory issues without these optimizations.
+
+Please restructure your imports with 'import unsloth' at the top of your file.
+  from unsloth import FastLanguageModel
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+INFO 11-19 14:38:21 [__init__.py:216] Automatically detected platform cuda.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+Using GPU: 3
+No WandB key provided. Skipping online mode.
+Attempting WandB offline mode...
+wandb: Tracking run with wandb version 0.17.9
+wandb: W&B syncing is set to `offline` in this directory.  
+wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+wandb: - 0.000 MB of 0.000 MB uploadedwandb:                                                                                
+wandb: You can sync this run to the cloud by running:
+wandb: wandb sync ./wandb_offline/wandb/offline-run-20261119_143838-d4tghk52
+wandb: Find logs at: ./wandb_offline/wandb/offline-run-20261119_143838-d4tghk52/logs
+wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.
+✓ WandB offline mode enabled. Data saved to: ./wandb_offline
+Note: Run 'wandb sync ./wandb_offline' later to upload data.
+Loading model...
+==((====))==  Unsloth 2025.10.10: Fast Qwen2 patching. Transformers: 4.56.2. vLLM: 0.11.0.
+   \\   /|    NVIDIA GeForce RTX 4090. Num GPUs = 1. Max memory: 47.371 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post1. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+Unsloth: Using bfloat16 full finetuning which cuts memory usage by 50%.
+Model loaded
+Loading training data...
+Found 1 .arrow files in /media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/ncsp/arrow/train8
+Loading file: data-00000-of-00001.arrow
+Successfully loaded, this file contains 8 samples
+Training data loaded, total 8 samples
+Configuring LoRA fine-tuning model...
+Unsloth: Full finetuning is enabled, so .get_peft_model has no effect
+LoRA model configuration complete
+Configuring training arguments...
+Configuring Trainer...
+Unsloth: Tokenizing ["text"] (num_proc=1):   0%|          | 0/8 [00:00<?, ? examples/s]Unsloth: Tokenizing ["text"] (num_proc=1): 100%|██████████| 8/8 [00:01<00:00,  7.62 examples/s]Unsloth: Tokenizing ["text"] (num_proc=1): 100%|██████████| 8/8 [00:01<00:00,  6.59 examples/s]
+Trainer configuration complete
+Starting training...
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': 151646}.
+==((====))==  Unsloth - 2x faster free finetuning | Num GPUs used = 1
+   \\   /|    Num examples = 8 | Num Epochs = 1 | Total steps = 2
+O^O/ \_/ \    Batch size per device = 1 | Gradient accumulation steps = 4
+\        /    Data Parallel GPUs = 1 | Total batch size (1 x 4 x 1) = 4
+ "-____-"     Trainable parameters = 1,777,088,000 of 1,777,088,000 (100.00% trained)
+wandb: Tracking run with wandb version 0.17.9
+wandb: W&B syncing is set to `offline` in this directory.  
+wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+  0%|          | 0/2 [00:00<?, ?it/s]Unsloth: Will smartly offload gradients to save VRAM!
+ 50%|█████     | 1/2 [00:30<00:30, 30.18s/it]100%|██████████| 2/2 [00:31<00:00, 13.29s/it]wandb: WARNING URL not available in offline run
+                                             {'train_runtime': 53.4124, 'train_samples_per_second': 0.15, 'train_steps_per_second': 0.037, 'train_loss': 0.19056697189807892, 'epoch': 1.0}
+100%|██████████| 2/2 [00:53<00:00, 13.29s/it]100%|██████████| 2/2 [00:53<00:00, 26.51s/it]
+Training complete
+Saving final model...
+Final model saved to ./final_model
+
+===== WandB Data Sync Reminder =====
+Training complete! Since WandB offline mode was used, please run the following command to sync data:
+cd ./wandb_offline && wandb sync .
+Local log file location: None
+
+===== Training fully completed! =====
+Full terminal output saved to: ./training_logs/terminal_output_20261119_143811.log
+Terminal log file size: 0.00 MB
+
+Generated log files:
+1. Full Terminal Output: ./training_logs/terminal_output_20261119_143811.log
+wandb: 
+wandb: Run history:
+wandb:       train/epoch ▁
+wandb: train/global_step ▁
+wandb: 
+wandb: Run summary:
+wandb:               total_flos 86037373019136.0
+wandb:              train/epoch 1.0
+wandb:        train/global_step 2
+wandb:               train_loss 0.19057
+wandb:            train_runtime 53.4124
+wandb: train_samples_per_second 0.15
+wandb:   train_steps_per_second 0.037
+wandb: 
+wandb: You can sync this run to the cloud by running:
+wandb: wandb sync ./wandb_offline/wandb/offline-run-20261119_143854-oos67ut9
+wandb: Find logs at: ./wandb_offline/wandb/offline-run-20261119_143854-oos67ut9/logs
+wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.

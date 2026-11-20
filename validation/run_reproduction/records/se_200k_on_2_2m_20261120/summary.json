@@ -1,0 +1,21 @@
+{
+  "model": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/weight/Structure elucidation/SE-CoT-1_MultiNMR_200k_weight",
+  "data": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/data/Structure elucidation/test/MultiNMR-2.2M/SE_MultiNMR_2.2M_test_arrow",
+  "backend": "vllm",
+  "total_samples": 54615,
+  "prediction_rows": 54615,
+  "has_answer": 54497,
+  "answer_complete": 54447,
+  "metrics": {
+    "prediction_validity_rate": 0.9019133937562941,
+    "accuracy": 0.4053465165247643,
+    "average_tanimoto": 0.7375567339680923,
+    "valid_smiles": 0.9019133937562941,
+    "accuracy_040": 0.7458390552046141,
+    "accuracy_060": 0.5801519729012176,
+    "accuracy_080": 0.46113705026091734,
+    "accuracy_090": 0.4274283621715646
+  },
+  "independent_rescore_matches": true,
+  "readme_inspect_infer_evaluate_passed": true
+}

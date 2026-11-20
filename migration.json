@@ -1,0 +1,67 @@
+{
+  "origin": "CLReasoner",
+  "original_directory_preserved": true,
+  "independent_runtime": true,
+  "audit": {
+    "test/test.py": {
+      "destinations": [
+        "spectroscopy/decoding.py"
+      ],
+      "source_sha256": "a726cbe433919ff989fc0e01e180ae274beebd6211cd9ed54fc2916836362f5a",
+      "original_function_and_class_count": 24,
+      "identical_ast_count": 19,
+      "adapted_functions": [
+        "load_model_from_model_checkpoint_folder_path",
+        "one_model_vllm_infer_multi_dataset",
+        "one_model_vllm_infer_one_dataset",
+        "save_vllm_infer_result_to_jsonl_file",
+        "single_checkpoint_infer_pipeline"
+      ],
+      "missing_functions": []
+    },
+    "test/stat_metrics_scription.py": {
+      "destinations": [
+        "spectroscopy/scoring.py"
+      ],
+      "source_sha256": "d7416f8dd6681ef8a9f9609ab0dde5f67488fe34775173b09593eb6286aa159c",
+      "original_function_and_class_count": 56,
+      "identical_ast_count": 56,
+      "adapted_functions": [],
+      "missing_functions": []
+    },
+    "test/chemistry_aware_self_consistency.py": {
+      "destinations": [
+        "spectroscopy/voting.py"
+      ],
+      "source_sha256": "78b6d46404edf094ba9320dbcc6eabfcc8ac916aa7295f7134ecccb398b4b6d1",
+      "original_function_and_class_count": 28,
+      "identical_ast_count": 28,
+      "adapted_functions": [],
+      "missing_functions": []
+    },
+    "train/train_single_gpu.py": {
+      "destinations": [
+        "experiments/fit.py"
+      ],
+      "source_sha256": "9a915dc45133c33909cd0b5294f0e01a59161984795b103f1a73925da85b5b89",
+      "original_function_and_class_count": 7,
+      "identical_ast_count": 3,
+      "adapted_functions": [
+        "formatting_prompts_func",
+        "load_multiple_arrow_files",
+        "save_complete_dataset_to_json",
+        "setup_wandb_with_fallback"
+      ],
+      "missing_functions": []
+    }
+  },
+  "adaptations": [
+    "CLI with task-specific scope and external configuration",
+    "Optional Transformers inference backend",
+    "Caller-controlled GPU visibility and lazy vLLM imports",
+    "Correct candidate serialization in original vLLM exporter",
+    "Training execution behind main() with CLI configuration",
+    "Project-relative default evaluator path"
+  ],
+  "validation_scope": "Real checkpoint, first 3 rows, inference and evaluation; no retraining"
+}

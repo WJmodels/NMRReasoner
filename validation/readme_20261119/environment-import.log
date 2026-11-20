@@ -1,0 +1,59 @@
+torch 2.8.0
+transformers 4.56.2
+trl 0.23.0
+unsloth 2025.10.10
+unsloth-zoo 2025.10.12
+torchao 0.18.0
+rdkit 2026.9.2
+vllm 0.11.0
+protobuf 5.29.5
+wandb 0.17.9
+[torchao|WARNING]Skipping import of cpp extensions due to incompatible torch version. Please upgrade to torch >= 2.11.0 (found 2.8.0+cu128).
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+Traceback (most recent call last):
+  File "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/lib/python3.11/site-packages/unsloth_zoo/temporary_patches/utils.py", line 107, in <module>
+    from transformers.processing_utils import Unpack
+  File "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/lib/python3.11/site-packages/transformers/processing_utils.py", line 75, in <module>
+    from .modeling_utils import PreTrainedAudioTokenizerBase
+  File "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/lib/python3.11/site-packages/transformers/modeling_utils.py", line 129, in <module>
+    from torchao.quantization import Int4WeightOnlyConfig
+  File "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/lib/python3.11/site-packages/torchao/__init__.py", line 107, in <module>
+    from torchao.quantization import (
+  File "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/lib/python3.11/site-packages/torchao/quantization/__init__.py", line 24, in <module>
+    from .quant_api import (
+  File "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/lib/python3.11/site-packages/torchao/quantization/quant_api.py", line 47, in <module>
+    from torchao.prototype.quantization.quant_api import (
+  File "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/lib/python3.11/site-packages/torchao/prototype/quantization/__init__.py", line 2, in <module>
+    from .quant_api import Int8DynamicActivationUIntxWeightConfig, UIntxWeightOnlyConfig
+  File "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/lib/python3.11/site-packages/torchao/prototype/quantization/quant_api.py", line 37, in <module>
+    from torchao.quantization.quantize_.workflows import (
+  File "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/lib/python3.11/site-packages/torchao/quantization/quantize_/workflows/__init__.py", line 4, in <module>
+    from .float8.float8_sparse_2x4_1d_data_1d_metadata_tensor import (
+  File "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/lib/python3.11/site-packages/torchao/quantization/quantize_/workflows/float8/float8_sparse_2x4_1d_data_1d_metadata_tensor.py", line 39, in <module>
+    from .float8_tensor import QuantizeTensorToFloat8Kwargs
+  File "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/lib/python3.11/site-packages/torchao/quantization/quantize_/workflows/float8/float8_tensor.py", line 12, in <module>
+    from torch.nn.functional import ScalingType, scaled_grouped_mm
+ImportError: cannot import name 'ScalingType' from 'torch.nn.functional' (/home/capios/anaconda3/envs/llama_factory_py311_cuda124/lib/python3.11/site-packages/torch/nn/functional.py)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/lib/python3.11/site-packages/unsloth/__init__.py", line 91, in <module>
+    import unsloth_zoo
+  File "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/lib/python3.11/site-packages/unsloth_zoo/__init__.py", line 147, in <module>
+    from .temporary_patches import (
+  File "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/lib/python3.11/site-packages/unsloth_zoo/temporary_patches/__init__.py", line 19, in <module>
+    from .gemma import *
+  File "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/lib/python3.11/site-packages/unsloth_zoo/temporary_patches/gemma.py", line 22, in <module>
+    from .utils import (
+  File "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/lib/python3.11/site-packages/unsloth_zoo/temporary_patches/utils.py", line 122, in <module>
+    raise Exception(e)
+Exception: cannot import name 'ScalingType' from 'torch.nn.functional' (/home/capios/anaconda3/envs/llama_factory_py311_cuda124/lib/python3.11/site-packages/torch/nn/functional.py)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<stdin>", line 4, in <module>
+  File "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/lib/python3.11/site-packages/unsloth/__init__.py", line 93, in <module>
+    raise ImportError("Unsloth: Please install unsloth_zoo via `pip install unsloth_zoo`")
+ImportError: Unsloth: Please install unsloth_zoo via `pip install unsloth_zoo`

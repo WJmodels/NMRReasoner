@@ -1,0 +1,22 @@
+[
+  {
+    "path_relative_to_workspace": "test/data/40w_solvent_test_22188/data-00000-of-00001.arrow",
+    "size_bytes": 36521728,
+    "sha256": "63c8f60171ca121bc98404cb35b3e80b1ef12ab2f4b0a29ed0a8d0813ea7d29b"
+  },
+  {
+    "path_relative_to_workspace": "test/weight/depth1_real_393034/outputs/checkpoint-73698/config.json",
+    "size_bytes": 762,
+    "sha256": "cc1f9a29a03991ad5ad7567198c729cfc2ceebc21d767959b7c5a1bd092747ba"
+  },
+  {
+    "path_relative_to_workspace": "test/weight/depth1_real_393034/outputs/checkpoint-73698/tokenizer_config.json",
+    "size_bytes": 6782,
+    "sha256": "cfb5a376af986b890d28ebf8978653e3192838c605cf3232666cc2daaee4b768"
+  },
+  {
+    "path_relative_to_workspace": "test/weight/depth1_real_393034/outputs/checkpoint-73698/model.safetensors",
+    "size_bytes": 3554214752,
+    "sha256": "f8ba02ea7a5c5a05968f488bac4b11d14d3876e8b06d6aa157fca1624dc3970f"
+  }
+]

@@ -1,0 +1,252 @@
+# NMRReasoner
+
+English：[README.md](README.md) | **简体中文**
+
+从分子式和 NMR 数据推断分子结构（SMILES），也支持从结构预测 ¹H / ¹³C 化学位移。提供数据加载、微调、推理、评估和候选投票功能。
+
+## 1. 下载数据、代码与权重
+
+GitHub 仓库仅包含代码，不包含 `data/` 和 `weight/` 下的数据与模型文件。请从下面的链接单独下载，解压到任意本地目录。
+
+- **数据**：本研究所用数据集已存储于 Zenodo： <https://doi.org/10.5281/zenodo.24297239>
+- **代码**：训练和推理代码： <https://github.com/WJmodels/NMRReasoner>
+- **模型权重**：已归档于 Zenodo：
+  - <https://doi.org/10.5281/zenodo.18463435>
+  - <https://doi.org/10.5281/zenodo.18463408>
+  - <https://doi.org/10.5281/zenodo.18512951>
+  - <https://doi.org/10.5281/zenodo.18512949>
+  - <https://doi.org/10.5281/zenodo.18512943>
+  - <https://doi.org/10.5281/zenodo.18512922>
+
+下面仅示意数据和模型目录的用途，不要求采用这些目录名或放在代码仓库内。所有命令中的 `/path/to/...` 都需要替换为实际路径；路径包含空格时需加引号。
+
+```text
+/path/to/resources/
+├── se_train_arrow/       # *.arrow
+├── se_test_arrow/        # *.arrow
+├── ncsp_train_arrow/     # *.arrow
+├── ncsp_test_arrow/      # *.arrow
+├── se_model/            # config.json, tokenizer files, model weights
+└── ncsp_model/          # config.json, tokenizer files, model weights
+```
+
+已有数据和权重时，可直接开始环境配置。
+
+## 2. 环境与快速开始
+
+以下命令均在 **NMRReasoner 目录**执行。使用 Transformers 推理时，先激活 Python 环境，再安装依赖：
+
+```bash
+python -m pip install -r requirements.txt
+python test.py inspect --data "/path/to/se_test_arrow" --model "/path/to/se_model"
+CUDA_VISIBLE_DEVICES=0 python test.py --data "/path/to/se_test_arrow" --model "/path/to/se_model" --output runs/demo
+```
+
+[experiments/local.json](experiments/local.json) 和 [experiments/shift_prediction.json](experiments/shift_prediction.json) 分别提供 SE、NCSP 推理参数示例。配置中的数据与模型路径为占位符，运行时通过 `--data` 和 `--model` 指定实际目录。NCSP 示例：
+
+```bash
+python test.py inspect --config experiments/shift_prediction.json --data "/path/to/ncsp_test_arrow" --model "/path/to/ncsp_model"
+CUDA_VISIBLE_DEVICES=0 python test.py --config experiments/shift_prediction.json --data "/path/to/ncsp_test_arrow" --model "/path/to/ncsp_model" --output runs/ncsp_demo
+```
+
+两种配置默认都取前 3 条。`MultiNMR-200k` 和 `MultiNMR-2.2M` 是数据集系列名称，不代表测试子集的实际条数；条数以 `inspect` 为准。
+
+`inspect` 检查数据列、定位 checkpoint 并打印第一条问题，不会将模型权重加载到 GPU。推理命令加载完整权重，默认处理**前 3 条样本**，每条最多生成 **5000 个新 token**。
+
+训练需要 Unsloth、TRL、PEFT 等依赖。训练或使用 vLLM 时，使用 [runtime.yml](runtime.yml) 创建环境：
+
+```bash
+conda env create --solver libmamba -f runtime.yml
+conda activate nmrreasoner
+```
+
+`requirements.txt` 用于 Transformers 推理，`runtime.yml` 包含训练和 vLLM 所需依赖。
+
+## 3. 准备数据
+
+### 使用已下载的数据
+
+下载的数据已采用 Arrow 格式，无需重新转换。`--data` 应指向含 `*.arrow` 文件的最内层目录。
+
+| 用途 | 路径占位符 |
+| --- | --- |
+| SE 训练（CoT-1） | `/path/to/se_train_arrow` |
+| SE 测试 | `/path/to/se_test_arrow` |
+| NCSP 训练（CoT-1） | `/path/to/ncsp_train_arrow` |
+| NCSP 测试 | `/path/to/ncsp_test_arrow` |
+
+其他 CoT 版本和 MultiNMR-2.2M 数据可按实际目录替换 `--data`。SE 和 NCSP 应分别使用对应任务的权重；JSONL 转换步骤仅用于准备自己的数据。
+
+### 数据格式
+
+每个数据集是包含一个或多个 `*.arrow` 分片的目录，必须具有以下三个**字符串列**：
+
+| 列名 | 结构解析（`nmr`） | 位移预测（`nmr_forward`） |
+| --- | --- | --- |
+| `question` | 分子式和 NMR 输入文本 | 与模型训练格式一致的结构输入文本 |
+| `cot` | 标准推理过程 | 标准推理过程 |
+| `answer` | 标准 SMILES，例如 `CCO` | 包含 `Formula`、`13C NMR:` 和 `1H NMR:` 的标准谱图文本 |
+
+训练、推理和评估都要求这三列存在。训练使用三列内容；生成只读取 `question`，自动评估使用标准答案。没有标准推理过程时，`cot` 可以为空字符串，但此时推理过程相关指标没有对应的参考内容。要获得有意义的指标，请使用有标准答案的测试数据。
+
+一个数据集只放一种任务：代码根据**第一条 answer**判断任务类型。问题文本应保持与 checkpoint 训练时一致的格式；存储的字段不需要额外包裹 `<think>` 或 `<answer>` 标签，训练和推理代码会构建外围模板。
+
+下面是 SE-CoT-1 / MultiNMR-200k 训练集的第一条样本（索引 0）。
+
+来源文件：`SE-CoT-1_MultiNMR_200k_train_arrow/data-00000-of-00001.arrow`。`cot` 使用结构化标签记录分子式、化学位移和局部结构片段。
+
+对应的完整 JSONL 行：
+
+```json
+{"question":"Formula:C8H12O2;FW:140.182;HSQC:[MASK];HMBC:[MASK];COSY:[MASK];13C NMR:[NCP:8]21.5,23.7,31.9,37.5,74.0,74.1,77.5,84.3;1H NMR:[NHP:10](1.47,1,[MASK]),(1.48,1,[MASK]),(1.49,1,[MASK]),(1.51,1,[MASK]),(1.58,1,[MASK]),(1.69,1,[MASK]),(1.96,1,[MASK]),(2.14,1,[MASK]),(2.87,1,[MASK]),(3.09,1,[MASK])","cot":"[Formula]C8H12O2[/Formula][FW]140.182[/FW][NQC][MASK][/NQC][NBC][MASK][/NBC][NCOSY][MASK][/NCOSY][NCP]8[/NCP][CP1]21.5[/CP1][C1]*C(*)(*)CC(*)(*)*[/C1][CP2]23.7[/CP2][C2]*C(*)(*)CC(*)(*)*[/C2][CP3]31.9[/CP3][C3]*C(*)(*)CC(*)(*)*[/C3][CP4]37.5[/CP4][C4]*C(*)(*)CC(*)(*)*[/C4][CP5]74.0[/CP5][C5]*OC(C(*)(*)*)C(*)(*)*[/C5][CP6]74.1[/CP6][C6]*C#C[/C6][CP7]77.5[/CP7][C7]*OC(C#*)(C(*)(*)*)C(*)(*)*[/C7][CP8]84.3[/CP8][C8]*C#CC(*)(*)*[/C8][NHP]10[/NHP][HP1]1.47[/HP1][H1I]1[/H1I][H1]*C(*)(*)CC(*)(*)*[/H1][HP2]1.48[/HP2][H2I]1[/H2I][H2]*C(*)(*)CC(*)(*)*[/H2][HP3]1.49[/HP3][H3I]1[/H3I][H3]*C(*)(*)CC(*)(*)*[/H3][HP4]1.51[/HP4][H4I]1[/H4I][H4]*C(*)(*)CC(*)(*)*[/H4][HP5]1.58[/HP5][H5I]1[/H5I][H5]*C(*)(*)CC(*)(*)*[/H5][HP6]1.69[/HP6][H6I]1[/H6I][H6]*C(*)(*)CC(*)(*)*[/H6][HP7]1.96[/HP7][H7I]1[/H7I][H7]*C(*)(*)CC(*)(*)*[/H7][HP8]2.14[/HP8][H8I]1[/H8I][H8]*C(*)(*)CC(*)(*)*[/H8][HP9]2.87[/HP9][H9I]1[/H9I][H9]*C#C[/H9][HP10]3.09[/HP10][H10I]1[/H10I][H10]*OC(C(*)(*)*)C(*)(*)*[/H10]","answer":"C#CC1(O)CCCCC1O"}
+```
+
+### 将 JSONL 转为 Arrow
+
+如使用自己的 JSONL 数据，在同一目录准备 `train.jsonl` 和 `test.jsonl`，每行一个完整 JSON 对象。修改下面的输入、输出目录后执行：
+
+```bash
+python - <<'PY'
+from pathlib import Path
+from datasets import load_dataset
+
+source_dir = Path("/path/to/jsonl")
+output_dir = Path("/path/to/arrow")
+
+for split in ("train", "test"):
+    ds = load_dataset("json", data_files=str(source_dir / f"{split}.jsonl"), split="train")
+    required = {"question", "cot", "answer"}
+    if not len(ds) or not required.issubset(ds.column_names):
+        raise ValueError(f"{split}: need non-empty data with {sorted(required)}")
+    if not all(isinstance(row[key], str) for row in ds for key in required):
+        raise ValueError(f"{split}: question/cot/answer must be strings, not null")
+    ds.save_to_disk(str(output_dir / split))
+    print(split, len(ds), ds.column_names)
+PY
+```
+
+将生成的 `/path/to/arrow/train` 或 `/path/to/arrow/test` 目录传给 `--data`，不要传 JSONL 文件或 `DatasetDict` 的上层目录。训练集和测试集应分开。
+
+## 4. 训练
+
+准备包含模型配置、分词器和权重的本地模型目录。`--model` 可指向下载的 SE 权重以继续微调，也可指向原始基础模型以重新训练。训练实现以离线模式读取本地文件，不自动恢复 optimizer/scheduler 状态。
+
+```bash
+# 先使用较小的每设备 batch，检查自己的训练环境
+CUDA_VISIBLE_DEVICES=0 python train.py \
+  --data "/path/to/se_train_arrow" \
+  --model "/path/to/se_model" \
+  --epochs 1 --batch-size 1 \
+  --output runs/train_demo
+```
+
+NCSP 训练使用对应的训练数据和权重：
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python train.py \
+  --data "/path/to/ncsp_train_arrow" \
+  --model "/path/to/ncsp_model" \
+  --epochs 1 --batch-size 1 --output runs/ncsp_train_demo
+```
+
+`--epochs` 默认 **20**，`--batch-size` 默认**每设备 64**，请按实验需求和显存调整。上面的命令会对整个训练集训练一轮。
+
+训练文本由代码构造为：
+
+```text
+question<think>cot</think><answer>answer</answer><EOS>
+```
+
+高级参数集中在 [experiments/settings.py](experiments/settings.py)：最大序列长度 **5000**、梯度累积 **4**、学习率 **2e-4**、每 **8000 步**保存 checkpoint，以及微调/LoRA 设置。单 GPU 下，batch size 为 1、梯度累积为 4 时，有效 batch size 为 4。`--max-tokens` 是推理参数，不能用它设置训练序列长度。
+
+默认 `FULL_FINETUNING=True`，更新全部模型参数；关闭全参数微调后，LoRA 设置才会生效。
+
+训练结果保存在 `--output` 目录下：
+
+| 路径 | 内容 |
+| --- | --- |
+| `outputs/checkpoint-*` | 达到保存步数间隔后生成的中间 checkpoint |
+| `final_model/` | 成功训练结束后保存的模型 |
+| `training_logs/` | 终端日志 |
+| `wandb_offline/` | W&B 可用时生成的离线记录 |
+
+推理入口要求完整模型权重和分词器文件。如果保存的是仅含 adapter 的目录，需要先结合基础模型合并、导出为完整模型目录；当前 CLI 不会自动合并 adapter。
+
+## 5. 推理
+
+默认使用 vLLM 推理，可通过 `--backend transformers` 切换至 Transformers。
+
+将 `--data` 替换为 SE 测试集目录，将 `--model` 替换为对应的完整权重目录：
+
+```bash
+python test.py inspect --data "/path/to/se_test_arrow" --model "/path/to/se_model"
+
+CUDA_VISIBLE_DEVICES=0 python test.py \
+  --data "/path/to/se_test_arrow" --model "/path/to/se_model" \
+  --limit 3 --max-tokens 5000 --output runs/custom
+```
+
+将 `--limit` 设为 `0` 可处理全部样本。`--model` 可以指向仅包含一个合格 checkpoint 的父目录；若存在多个 checkpoint，应指定具体目录。
+
+| 参数 | 说明 |
+| --- | --- |
+| `--limit 3` | 处理前 N 条；`0` 表示全部 |
+| `--max-tokens 5000` | 每条最多新增的 token 数 |
+| `--beam-width 3` | 使用束搜索生成三个候选；默认 1 |
+| `--temperature 0` | 贪心/束搜索解码；Transformers 中大于 0 时启用采样 |
+| `--top-p 0.95 --top-k 20` | 采样参数 |
+| `--device cuda:0` | Transformers 使用的设备，也支持 `cpu` |
+| `--backend vllm` | 默认推理后端；runtime.yml 已包含所需依赖 |
+
+通过 `CUDA_VISIBLE_DEVICES` 选择物理 GPU。例如 `CUDA_VISIBLE_DEVICES=3` 会让物理 GPU 3 在进程内成为 `cuda:0`。vLLM 使用 `--tensor-parallel-size` 和 `--gpu-memory-utilization`；`--device` 用于 Transformers。全部参数（包括位移小数位设置）可通过 `python test.py --help` 查看。
+
+每次推理输出：
+
+| 路径 | 内容 |
+| --- | --- |
+| `ground_truth/` | 与预测逐行对应的选中样本 |
+| `predictions.jsonl` | 全部候选，格式为 `{"text": ["完整生成文本", ...]}` |
+| `predictions.txt` | 每条样本的首个候选，内部换行已转义 |
+| `metrics.json` | 首个候选的自动评估结果 |
+| `validation.json` | 配置、解析后的路径、耗时和生成记录 |
+
+每次实验建议使用新的输出目录；已有同名文件会被覆盖。
+
+## 6. 评估与投票
+
+复算指标时，使用推理保存的子集，保持样本数量和顺序一致：
+
+```bash
+python test.py evaluate --data runs/custom/ground_truth \
+  --predictions runs/custom/predictions.txt --output runs/custom/rescore.json
+```
+
+结构预测可以聚合多个 JSONL 候选文件；这些文件必须对应**同一批样本且顺序相同**，按优先级从高到低排列：
+
+```bash
+python test.py vote --data runs/custom/ground_truth \
+  --predictions runs/model_a/predictions.jsonl runs/model_b/predictions.jsonl \
+  --topk 10 --workers 1 --output runs/vote
+```
+
+将示例路径替换为实际实验结果。投票结果保存在 `runs/vote/consensus/`。`--topk` 是评估的排名上限，与采样参数 `--top-k` 不同。投票会规范化 SMILES、按分子式过滤；无候选通过分子式检查时，会回退到仅检查 SMILES 合法性的候选；票数相同时按文件和候选优先级排序。投票不支持化学位移答案。
+
+结构评估默认忽略手性。普通评估的 Tanimoto 对有效比较求平均，投票评估对全部样本求平均。默认过滤规则下，正向位移误差只统计 ¹H 和 ¹³C 峰数都与标准答案匹配的有效样本。请同时查看 `valid_samples_for_error_metrics`：若为 0，误差字段中的 0 表示没有可统计的有效样本，不代表预测完全正确。
+
+## 7. 配置与代码结构
+
+[experiments/local.json](experiments/local.json) 是默认推理参数模板，路径占位符须替换或用命令行覆盖。可用 `--config path/to/preset.json` 替换。优先级为**命令行 > JSON > 内置默认值**。训练使用自己的命令行参数和 `experiments/settings.py`，不读取此推理配置。
+
+- JSON 中 `data`、`model` 的相对路径以 **JSON 所在目录**为基准。
+- 命令行路径及 `output` 以**当前工作目录**为基准。
+- 支持绝对路径、`~` 和路径中的环境变量。
+
+| 位置 | 职责 |
+| --- | --- |
+| `test.py` / `train.py` | 推理、评估入口 / 训练入口 |
+| `nmrreasoner/` | 命令行、配置、资源检查、推理后端、服务和结果记录 |
+| `spectroscopy/` | 提示词、化学评分和投票算法 |
+| `experiments/` | 训练实现与参数 |
+| `checks/` | 回归检查 |
+
+也可使用 `run.py` 或 `python -m nmrreasoner inspect --data /path/to/test_arrow --model /path/to/model`。错误时添加 `--debug` 查看完整堆栈。运行回归检查：`python -m unittest discover -s checks -v`。

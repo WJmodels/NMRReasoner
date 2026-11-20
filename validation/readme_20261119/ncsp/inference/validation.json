@@ -1,0 +1,73 @@
+{
+  "project": "NMRReasoner",
+  "task": "nmr_forward",
+  "model": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/weight/NMR chemical shift prediction/NCSP-CoT-1_MultiNMR_real200k_weight",
+  "data": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/data/NMR chemical shift prediction/test/MultiNMR-200k/NCSP_MultiNMR_200k_test_arrow",
+  "dataset_rows": 54615,
+  "evaluated_rows": 3,
+  "backend": "transformers",
+  "torch": "2.8.0+cu128",
+  "transformers": "4.56.2",
+  "config": {
+    "data": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/data/NMR chemical shift prediction/test/MultiNMR-200k/NCSP_MultiNMR_200k_test_arrow",
+    "model": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/weight/NMR chemical shift prediction/NCSP-CoT-1_MultiNMR_real200k_weight",
+    "output": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/ncsp/inference",
+    "limit": 3,
+    "max_tokens": 5000,
+    "backend": "transformers",
+    "device": "cuda:0",
+    "beam_width": 1,
+    "temperature": 0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "adjust_decimal_places": false,
+    "c_shift_decimal_place": 1,
+    "h_shift_decimal_place": 2,
+    "tensor_parallel_size": 1,
+    "gpu_memory_utilization": 0.7
+  },
+  "elapsed_seconds": 258.87692618370056,
+  "generation": [
+    {
+      "index": 0,
+      "input_tokens": 25,
+      "generated_tokens": 621,
+      "has_answer": true,
+      "reached_token_limit": false
+    },
+    {
+      "index": 1,
+      "input_tokens": 19,
+      "generated_tokens": 5000,
+      "has_answer": true,
+      "reached_token_limit": true
+    },
+    {
+      "index": 2,
+      "input_tokens": 57,
+      "generated_tokens": 1314,
+      "has_answer": true,
+      "reached_token_limit": false
+    }
+  ],
+  "metrics": {
+    "total_samples": 3,
+    "valid_samples_for_deta_13c_count": 0,
+    "valid_samples_for_deta_1h_count": 0,
+    "valid_samples_for_error_metrics": 0,
+    "average_deta_13C_nmr_shift_count": 0.0,
+    "average_deta_1H_nmr_shift_count": 0.0,
+    "average_cot_13c_tanimoto": 0.31270543199513207,
+    "average_cot_1h_tanimoto": 0.37025066853380956,
+    "average_cot_brics_tanimoto": 0.0,
+    "average_cot_13c_accuracy": 0.0,
+    "average_cot_1h_accuracy": 0.0,
+    "average_cot_brics_accuracy": 0.0,
+    "average_mae_zero_padding_13C_nmr_shift": 0.0,
+    "average_mae_zero_padding_1H_nmr_shift": 0.0,
+    "average_mse_zero_padding_13C_nmr_shift": 0.0,
+    "average_mse_zero_padding_1H_nmr_shift": 0.0,
+    "average_rmsd_zero_padding_13C_nmr_shift": 0.0,
+    "average_rmsd_zero_padding_1H_nmr_shift": 0.0
+  }
+}

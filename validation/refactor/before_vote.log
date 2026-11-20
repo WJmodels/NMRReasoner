@@ -1,0 +1,37 @@
+[11:49:30] SMILES Parse Error: syntax error while parsing: C(C)c1ccc(:2)C1OP(=S)O
+[11:49:30] SMILES Parse Error: check for mistakes around position 12:
+[11:49:30] C(C)c1ccc(:2)C1OP(=S)O
+[11:49:30] ~~~~~~~~~~~^
+[11:49:30] SMILES Parse Error: Failed parsing SMILES 'C(C)c1ccc(:2)C1OP(=S)O' for input: 'C(C)c1ccc(:2)C1OP(=S)O'
+[11:49:30] SMILES Parse Error: syntax error while parsing: C(C)c1ccc(:2)C1OP(=S)O
+[11:49:30] SMILES Parse Error: check for mistakes around position 12:
+[11:49:30] C(C)c1ccc(:2)C1OP(=S)O
+[11:49:30] ~~~~~~~~~~~^
+[11:49:30] SMILES Parse Error: Failed parsing SMILES 'C(C)c1ccc(:2)C1OP(=S)O' for input: 'C(C)c1ccc(:2)C1OP(=S)O'
+================================================================================
+Starting Multi-Model Self-Consistency Voting Pipeline
+================================================================================
+Loading arrow file: validation/refactor/before/ground_truth/data-00000-of-00001.arrow
+Successfully merged 1 files. Total samples: 3, Task: nmr
+Extracting and filtering answers (Strict & Relaxed)...
+Self-Consistency Parallel Execution:   0%|          | 0/3 [00:00<?, ?it/s]Self-Consistency Parallel Execution: 100%|██████████| 3/3 [00:00<00:00, 6967.28it/s]
+[11:49:30] DEPRECATION WARNING: please use MorganGenerator
+[11:49:30] DEPRECATION WARNING: please use MorganGenerator
+[11:49:30] DEPRECATION WARNING: please use MorganGenerator
+[11:49:30] DEPRECATION WARNING: please use MorganGenerator
+[11:49:30] DEPRECATION WARNING: please use MorganGenerator
+
+Final Averaged Metrics:
+  prediction_validity_rate: 0.6667
+  accuracy: 0.0000
+  average_tanimoto: 0.1422
+  top1: 0.0000
+  top2: 0.0000
+  top3: 0.0000
+  top4: 0.0000
+  top5: 0.0000
+  top6: 0.0000
+  top7: 0.0000
+  top8: 0.0000
+  top9: 0.0000
+  top10: 0.0000

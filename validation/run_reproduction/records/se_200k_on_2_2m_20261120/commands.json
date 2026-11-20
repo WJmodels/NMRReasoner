@@ -1,0 +1,69 @@
+[
+  {
+    "stage": "inspect",
+    "command": [
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/bin/python",
+      "test.py",
+      "inspect",
+      "--data",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/data/Structure elucidation/test/MultiNMR-2.2M/SE_MultiNMR_2.2M_test_arrow",
+      "--model",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/weight/Structure elucidation/SE-CoT-1_MultiNMR_200k_weight"
+    ],
+    "shell_command": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/bin/python test.py inspect --data '/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/data/Structure elucidation/test/MultiNMR-2.2M/SE_MultiNMR_2.2M_test_arrow' --model '/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/weight/Structure elucidation/SE-CoT-1_MultiNMR_200k_weight'",
+    "returncode": 0,
+    "seconds": 9.779114961624146
+  },
+  {
+    "stage": "infer",
+    "command": [
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/bin/python",
+      "test.py",
+      "--data",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/data/Structure elucidation/test/MultiNMR-2.2M/SE_MultiNMR_2.2M_test_arrow",
+      "--model",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/weight/Structure elucidation/SE-CoT-1_MultiNMR_200k_weight",
+      "--limit",
+      "0",
+      "--max-tokens",
+      "5000",
+      "--output",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/se_200k_on_2_2m_20261120/inference"
+    ],
+    "shell_command": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/bin/python test.py --data '/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/data/Structure elucidation/test/MultiNMR-2.2M/SE_MultiNMR_2.2M_test_arrow' --model '/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/weight/Structure elucidation/SE-CoT-1_MultiNMR_200k_weight' --limit 0 --max-tokens 5000 --output /media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/se_200k_on_2_2m_20261120/inference",
+    "returncode": 0,
+    "seconds": 10383.983560562134
+  },
+  {
+    "stage": "evaluate",
+    "command": [
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/bin/python",
+      "test.py",
+      "evaluate",
+      "--data",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/se_200k_on_2_2m_20261120/inference/ground_truth",
+      "--predictions",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/se_200k_on_2_2m_20261120/inference/predictions.txt",
+      "--output",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/se_200k_on_2_2m_20261120/inference/rescore.json"
+    ],
+    "shell_command": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/bin/python test.py evaluate --data /media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/se_200k_on_2_2m_20261120/inference/ground_truth --predictions /media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/se_200k_on_2_2m_20261120/inference/predictions.txt --output /media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/se_200k_on_2_2m_20261120/inference/rescore.json",
+    "returncode": 0,
+    "seconds": 64.28201413154602
+  },
+  {
+    "stage": "regression",
+    "command": [
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "checks",
+      "-v"
+    ],
+    "shell_command": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/bin/python -m unittest discover -s checks -v",
+    "returncode": 0,
+    "seconds": 8.231587648391724
+  }
+]

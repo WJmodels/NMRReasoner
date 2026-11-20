@@ -1,0 +1,40 @@
+[
+  {
+    "name": "se_vllm",
+    "command": [
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/bin/python",
+      "test.py",
+      "--data",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/se/arrow/test",
+      "--model",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/weight/Structure elucidation/SE-CoT-1_MultiNMR_real200k_weight",
+      "--backend",
+      "vllm",
+      "--limit",
+      "1",
+      "--output",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/se/vllm"
+    ],
+    "returncode": 0,
+    "seconds": 107.90325379371643
+  },
+  {
+    "name": "ncsp_vllm",
+    "command": [
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/bin/python",
+      "test.py",
+      "--data",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/ncsp/arrow/test",
+      "--model",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/weight/NMR chemical shift prediction/NCSP-CoT-1_MultiNMR_real200k_weight",
+      "--backend",
+      "vllm",
+      "--limit",
+      "1",
+      "--output",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/ncsp/vllm"
+    ],
+    "returncode": 0,
+    "seconds": 94.0880331993103
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "project": "NMRReasoner",
+  "task": "nmr",
+  "model": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/weight/Structure elucidation/SE-CoT-1_MultiNMR_real200k_weight",
+  "data": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/se/arrow/test",
+  "dataset_rows": 3,
+  "evaluated_rows": 1,
+  "backend": "vllm",
+  "torch": "2.8.0+cu128",
+  "transformers": "4.56.2",
+  "config": {
+    "data": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/se/arrow/test",
+    "model": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/weight/Structure elucidation/SE-CoT-1_MultiNMR_real200k_weight",
+    "output": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/se/vllm",
+    "limit": 1,
+    "max_tokens": 5000,
+    "backend": "vllm",
+    "device": "cuda:0",
+    "beam_width": 1,
+    "temperature": 0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "adjust_decimal_places": false,
+    "c_shift_decimal_place": 1,
+    "h_shift_decimal_place": 2,
+    "tensor_parallel_size": 1,
+    "gpu_memory_utilization": 0.7
+  },
+  "elapsed_seconds": 99.31222248077393,
+  "generation": [],
+  "metrics": {
+    "prediction_validity_rate": 0.0,
+    "accuracy": 0.0,
+    "average_tanimoto": 0.0,
+    "valid_smiles": 0.0,
+    "accuracy_040": 0.0,
+    "accuracy_060": 0.0,
+    "accuracy_080": 0.0,
+    "accuracy_090": 0.0
+  }
+}

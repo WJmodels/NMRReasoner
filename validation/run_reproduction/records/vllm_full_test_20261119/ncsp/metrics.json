@@ -1,0 +1,20 @@
+{
+  "total_samples": 54615,
+  "valid_samples_for_deta_13c_count": 54556,
+  "valid_samples_for_deta_1h_count": 54556,
+  "valid_samples_for_error_metrics": 16015,
+  "average_deta_13C_nmr_shift_count": -0.062321284551653346,
+  "average_deta_1H_nmr_shift_count": -3.0349182491385,
+  "average_cot_13c_tanimoto": 0.7025655236456865,
+  "average_cot_1h_tanimoto": 0.6455824946977358,
+  "average_cot_brics_tanimoto": 0.0,
+  "average_cot_13c_accuracy": 0.47779165093465475,
+  "average_cot_1h_accuracy": 0.4496201737551307,
+  "average_cot_brics_accuracy": 0.0,
+  "average_mae_zero_padding_13C_nmr_shift": 3.472674232547064,
+  "average_mae_zero_padding_1H_nmr_shift": 0.2290922242128777,
+  "average_mse_zero_padding_13C_nmr_shift": 39.33750476222958,
+  "average_mse_zero_padding_1H_nmr_shift": 0.1241579759369134,
+  "average_rmsd_zero_padding_13C_nmr_shift": 4.961662971955675,
+  "average_rmsd_zero_padding_1H_nmr_shift": 0.2930156732198596
+}

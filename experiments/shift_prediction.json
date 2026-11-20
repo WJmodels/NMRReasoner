@@ -1,0 +1,9 @@
+{
+  "data": "/path/to/ncsp_test_arrow",
+  "model": "/path/to/ncsp_model",
+  "output": "runs/shift_prediction",
+  "limit": 3,
+  "max_tokens": 5000,
+  "backend": "vllm",
+  "device": "cuda:0"
+}

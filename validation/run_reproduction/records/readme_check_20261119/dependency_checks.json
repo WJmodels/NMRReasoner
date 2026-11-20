@@ -1,0 +1,117 @@
+[
+  {
+    "requirement": "unsloth==2025.10.10",
+    "installed": "2025.10.10",
+    "matches": true
+  },
+  {
+    "requirement": "unsloth-zoo==2025.10.12",
+    "installed": "2025.10.12",
+    "matches": true
+  },
+  {
+    "requirement": "torch==2.8.0",
+    "installed": "2.8.0",
+    "matches": true
+  },
+  {
+    "requirement": "torchvision==0.23.0",
+    "installed": "0.23.0",
+    "matches": true
+  },
+  {
+    "requirement": "torchaudio==2.8.0",
+    "installed": "2.8.0",
+    "matches": true
+  },
+  {
+    "requirement": "xformers==0.0.32.post1",
+    "installed": "0.0.32.post1",
+    "matches": true
+  },
+  {
+    "requirement": "triton==3.4.0",
+    "installed": "3.4.0",
+    "matches": true
+  },
+  {
+    "requirement": "vllm==0.11.0",
+    "installed": "0.11.0",
+    "matches": true
+  },
+  {
+    "requirement": "bitsandbytes==0.48.1",
+    "installed": "0.48.1",
+    "matches": true
+  },
+  {
+    "requirement": "cut-cross-entropy==25.1.1",
+    "installed": "25.1.1",
+    "matches": true
+  },
+  {
+    "requirement": "transformers==4.56.2",
+    "installed": "4.56.2",
+    "matches": true
+  },
+  {
+    "requirement": "datasets==4.3.0",
+    "installed": "4.3.0",
+    "matches": true
+  },
+  {
+    "requirement": "accelerate==1.11.0",
+    "installed": "1.11.0",
+    "matches": true
+  },
+  {
+    "requirement": "peft==0.17.1",
+    "installed": "0.17.1",
+    "matches": true
+  },
+  {
+    "requirement": "trl==0.23.0",
+    "installed": "0.23.0",
+    "matches": true
+  },
+  {
+    "requirement": "numpy==2.2.6",
+    "installed": "2.2.6",
+    "matches": true
+  },
+  {
+    "requirement": "pandas==2.3.3",
+    "installed": "2.3.3",
+    "matches": true
+  },
+  {
+    "requirement": "sentencepiece==0.2.1",
+    "installed": "0.2.1",
+    "matches": true
+  },
+  {
+    "requirement": "protobuf==5.29.5",
+    "installed": "5.29.5",
+    "matches": true
+  },
+  {
+    "requirement": "hf-transfer==0.1.9",
+    "installed": "0.1.9",
+    "matches": true
+  },
+  {
+    "requirement": "wandb==0.17.9",
+    "installed": "0.17.9",
+    "matches": true
+  },
+  {
+    "requirement": "rdkit>=2024.3",
+    "installed": "2026.9.2",
+    "matches": true
+  },
+  {
+    "requirement": "torchao==0.13.0",
+    "installed": "0.13.0",
+    "matches": true
+  }
+]

@@ -1,0 +1,364 @@
+{
+  "created_at": "2026-11-20 14:13:29",
+  "entries": [
+    {
+      "path": "runs/readme_check_20261119/ncsp/train_existing_env/final_model/model.safetensors",
+      "bytes_before": 3554214752,
+      "action": "delete_regenerable_training_binary",
+      "state": "done"
+    },
+    {
+      "path": "runs/readme_check_20261119/ncsp/train_existing_env/final_model/tokenizer.json",
+      "bytes_before": 11422877,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "164494d8f587e59b00e7483dde37003eed8e45628494e7a223fc252fe95ee912",
+      "retained_path": "runs/readme_check_20261119/ncsp/train_existing_env/final_model/tokenizer.json.gz",
+      "bytes_after": 2142379
+    },
+    {
+      "path": "runs/readme_check_20261119/ncsp/train_existing_env/outputs/checkpoint-1/model.safetensors",
+      "bytes_before": 3554214752,
+      "action": "delete_regenerable_training_binary",
+      "state": "done"
+    },
+    {
+      "path": "runs/readme_check_20261119/ncsp/train_existing_env/outputs/checkpoint-1/optimizer.pt",
+      "bytes_before": 3610891735,
+      "action": "delete_regenerable_training_binary",
+      "state": "done"
+    },
+    {
+      "path": "runs/readme_check_20261119/ncsp/train_existing_env/outputs/checkpoint-1/tokenizer.json",
+      "bytes_before": 11422877,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "164494d8f587e59b00e7483dde37003eed8e45628494e7a223fc252fe95ee912",
+      "retained_path": "runs/readme_check_20261119/ncsp/train_existing_env/outputs/checkpoint-1/tokenizer.json.gz",
+      "bytes_after": 2142379
+    },
+    {
+      "path": "runs/readme_check_20261119/ncsp/training/final_model/model.safetensors",
+      "bytes_before": 3554214752,
+      "action": "delete_regenerable_training_binary",
+      "state": "done"
+    },
+    {
+      "path": "runs/readme_check_20261119/ncsp/training/final_model/tokenizer.json",
+      "bytes_before": 11422877,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "164494d8f587e59b00e7483dde37003eed8e45628494e7a223fc252fe95ee912",
+      "retained_path": "runs/readme_check_20261119/ncsp/training/final_model/tokenizer.json.gz",
+      "bytes_after": 2142379
+    },
+    {
+      "path": "runs/readme_check_20261119/ncsp/training/outputs/checkpoint-2/model.safetensors",
+      "bytes_before": 3554214752,
+      "action": "delete_regenerable_training_binary",
+      "state": "done"
+    },
+    {
+      "path": "runs/readme_check_20261119/ncsp/training/outputs/checkpoint-2/optimizer.pt",
+      "bytes_before": 5003844625,
+      "action": "delete_regenerable_training_binary",
+      "state": "done"
+    },
+    {
+      "path": "runs/readme_check_20261119/ncsp/training/outputs/checkpoint-2/tokenizer.json",
+      "bytes_before": 11422877,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "164494d8f587e59b00e7483dde37003eed8e45628494e7a223fc252fe95ee912",
+      "retained_path": "runs/readme_check_20261119/ncsp/training/outputs/checkpoint-2/tokenizer.json.gz",
+      "bytes_after": 2142379
+    },
+    {
+      "path": "runs/readme_check_20261119/ncsp/training_fixed/final_model/model.safetensors",
+      "bytes_before": 3554214752,
+      "action": "delete_regenerable_training_binary",
+      "state": "done"
+    },
+    {
+      "path": "runs/readme_check_20261119/ncsp/training_fixed/final_model/tokenizer.json",
+      "bytes_before": 11422877,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "164494d8f587e59b00e7483dde37003eed8e45628494e7a223fc252fe95ee912",
+      "retained_path": "runs/readme_check_20261119/ncsp/training_fixed/final_model/tokenizer.json.gz",
+      "bytes_after": 2142379
+    },
+    {
+      "path": "runs/readme_check_20261119/ncsp/training_fixed/outputs/checkpoint-2/model.safetensors",
+      "bytes_before": 3554214752,
+      "action": "delete_regenerable_training_binary",
+      "state": "done"
+    },
+    {
+      "path": "runs/readme_check_20261119/ncsp/training_fixed/outputs/checkpoint-2/optimizer.pt",
+      "bytes_before": 5003844625,
+      "action": "delete_regenerable_training_binary",
+      "state": "done"
+    },
+    {
+      "path": "runs/readme_check_20261119/ncsp/training_fixed/outputs/checkpoint-2/tokenizer.json",
+      "bytes_before": 11422877,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "164494d8f587e59b00e7483dde37003eed8e45628494e7a223fc252fe95ee912",
+      "retained_path": "runs/readme_check_20261119/ncsp/training_fixed/outputs/checkpoint-2/tokenizer.json.gz",
+      "bytes_after": 2142379
+    },
+    {
+      "path": "runs/readme_check_20261119/se/train_existing_env/final_model/model.safetensors",
+      "bytes_before": 3554214752,
+      "action": "delete_regenerable_training_binary",
+      "state": "done"
+    },
+    {
+      "path": "runs/readme_check_20261119/se/train_existing_env/final_model/tokenizer.json",
+      "bytes_before": 11422877,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "164494d8f587e59b00e7483dde37003eed8e45628494e7a223fc252fe95ee912",
+      "retained_path": "runs/readme_check_20261119/se/train_existing_env/final_model/tokenizer.json.gz",
+      "bytes_after": 2142379
+    },
+    {
+      "path": "runs/readme_check_20261119/se/train_existing_env/outputs/checkpoint-1/model.safetensors",
+      "bytes_before": 3554214752,
+      "action": "delete_regenerable_training_binary",
+      "state": "done"
+    },
+    {
+      "path": "runs/readme_check_20261119/se/train_existing_env/outputs/checkpoint-1/optimizer.pt",
+      "bytes_before": 3610891735,
+      "action": "delete_regenerable_training_binary",
+      "state": "done"
+    },
+    {
+      "path": "runs/readme_check_20261119/se/train_existing_env/outputs/checkpoint-1/tokenizer.json",
+      "bytes_before": 11422877,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "164494d8f587e59b00e7483dde37003eed8e45628494e7a223fc252fe95ee912",
+      "retained_path": "runs/readme_check_20261119/se/train_existing_env/outputs/checkpoint-1/tokenizer.json.gz",
+      "bytes_after": 2142379
+    },
+    {
+      "path": "runs/readme_check_20261119/se/training/final_model/model.safetensors",
+      "bytes_before": 3554214752,
+      "action": "delete_regenerable_training_binary",
+      "state": "done"
+    },
+    {
+      "path": "runs/readme_check_20261119/se/training/final_model/tokenizer.json",
+      "bytes_before": 11422877,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "164494d8f587e59b00e7483dde37003eed8e45628494e7a223fc252fe95ee912",
+      "retained_path": "runs/readme_check_20261119/se/training/final_model/tokenizer.json.gz",
+      "bytes_after": 2142379
+    },
+    {
+      "path": "runs/readme_check_20261119/se/training/outputs/checkpoint-2/model.safetensors",
+      "bytes_before": 3554214752,
+      "action": "delete_regenerable_training_binary",
+      "state": "done"
+    },
+    {
+      "path": "runs/readme_check_20261119/se/training/outputs/checkpoint-2/optimizer.pt",
+      "bytes_before": 5003844625,
+      "action": "delete_regenerable_training_binary",
+      "state": "done"
+    },
+    {
+      "path": "runs/readme_check_20261119/se/training/outputs/checkpoint-2/tokenizer.json",
+      "bytes_before": 11422877,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "164494d8f587e59b00e7483dde37003eed8e45628494e7a223fc252fe95ee912",
+      "retained_path": "runs/readme_check_20261119/se/training/outputs/checkpoint-2/tokenizer.json.gz",
+      "bytes_after": 2142379
+    },
+    {
+      "path": "runs/readme_check_20261119/se/training_fixed/final_model/model.safetensors",
+      "bytes_before": 3554214752,
+      "action": "delete_regenerable_training_binary",
+      "state": "done"
+    },
+    {
+      "path": "runs/readme_check_20261119/se/training_fixed/final_model/tokenizer.json",
+      "bytes_before": 11422877,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "164494d8f587e59b00e7483dde37003eed8e45628494e7a223fc252fe95ee912",
+      "retained_path": "runs/readme_check_20261119/se/training_fixed/final_model/tokenizer.json.gz",
+      "bytes_after": 2142379
+    },
+    {
+      "path": "runs/readme_check_20261119/se/training_fixed/outputs/checkpoint-2/model.safetensors",
+      "bytes_before": 3554214752,
+      "action": "delete_regenerable_training_binary",
+      "state": "done"
+    },
+    {
+      "path": "runs/readme_check_20261119/se/training_fixed/outputs/checkpoint-2/optimizer.pt",
+      "bytes_before": 5003844625,
+      "action": "delete_regenerable_training_binary",
+      "state": "done"
+    },
+    {
+      "path": "runs/readme_check_20261119/se/training_fixed/outputs/checkpoint-2/tokenizer.json",
+      "bytes_before": 11422877,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "164494d8f587e59b00e7483dde37003eed8e45628494e7a223fc252fe95ee912",
+      "retained_path": "runs/readme_check_20261119/se/training_fixed/outputs/checkpoint-2/tokenizer.json.gz",
+      "bytes_after": 2142379
+    },
+    {
+      "path": "runs/se_200k_on_2_2m_20261120/evaluate.log",
+      "bytes_before": 9925943,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "3c264925c4020d62539fb1494d174156cdb927f00b36ec34c69c15ea71264f26",
+      "retained_path": "runs/se_200k_on_2_2m_20261120/evaluate.log.gz",
+      "bytes_after": 353095
+    },
+    {
+      "path": "runs/se_200k_on_2_2m_20261120/infer.log",
+      "bytes_before": 15671842,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "d4d5c7502614f2f45643b0fb75f5a61c76168d7f8c8f14e329fcd4584538d7e2",
+      "retained_path": "runs/se_200k_on_2_2m_20261120/infer.log.gz",
+      "bytes_after": 1019722
+    },
+    {
+      "path": "runs/se_200k_on_2_2m_20261120/inference/ground_truth/data-00000-of-00001.arrow",
+      "bytes_before": 118229192,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "c99f512afeb1038a71ce3e3c1d14de8df7fc2225727f4fbce86ea3753153c586",
+      "retained_path": "runs/se_200k_on_2_2m_20261120/inference/ground_truth/data-00000-of-00001.arrow.gz",
+      "bytes_after": 20550716
+    },
+    {
+      "path": "runs/se_200k_on_2_2m_20261120/inference/predictions.jsonl",
+      "bytes_before": 120084416,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "57bc2a9cfb91a7252579ed99163d8807d952db95280e23673eb7ad3585500a73",
+      "retained_path": "runs/se_200k_on_2_2m_20261120/inference/predictions.jsonl.gz",
+      "bytes_after": 21613251
+    },
+    {
+      "path": "runs/se_200k_on_2_2m_20261120/inference/predictions.txt",
+      "bytes_before": 119319806,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "ba74c4644e9715e365c14732c7e9385333e056239fd7caa382385745d70053cd",
+      "retained_path": "runs/se_200k_on_2_2m_20261120/inference/predictions.txt.gz",
+      "bytes_after": 21579176
+    },
+    {
+      "path": "runs/vllm_full_test_20261119/ncsp/ground_truth/data-00000-of-00001.arrow",
+      "bytes_before": 118228928,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "84258d6e3a66897e42ce70613edab621c3934179cf28b60cb654f03f30ec817b",
+      "retained_path": "runs/vllm_full_test_20261119/ncsp/ground_truth/data-00000-of-00001.arrow.gz",
+      "bytes_after": 20549846
+    },
+    {
+      "path": "runs/vllm_full_test_20261119/ncsp/predictions.jsonl",
+      "bytes_before": 108134057,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "3b77e6a70b718fad73ffa91b3d67e48cc21002da4559b5321b71557582e436fa",
+      "retained_path": "runs/vllm_full_test_20261119/ncsp/predictions.jsonl.gz",
+      "bytes_after": 19538002
+    },
+    {
+      "path": "runs/vllm_full_test_20261119/ncsp/predictions.txt",
+      "bytes_before": 107369447,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "777f28f96d0679a04efcce4ee07b41efa5aa019a77b30eeec9b4396f0b178e5c",
+      "retained_path": "runs/vllm_full_test_20261119/ncsp/predictions.txt.gz",
+      "bytes_after": 19503258
+    },
+    {
+      "path": "runs/vllm_full_test_20261119/ncsp_evaluate.log",
+      "bytes_before": 172409062,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "cb14d89c06e7741b33a83c62a45c30797d630a18c129cb28b6f24e7fab180741",
+      "retained_path": "runs/vllm_full_test_20261119/ncsp_evaluate.log.gz",
+      "bytes_after": 1227740
+    },
+    {
+      "path": "runs/vllm_full_test_20261119/ncsp_infer.log",
+      "bytes_before": 177538687,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "75d366ae99f0141f80a527a961ad91248aa78c976fbd77c230e86cf2eca500b1",
+      "retained_path": "runs/vllm_full_test_20261119/ncsp_infer.log.gz",
+      "bytes_after": 1798433
+    },
+    {
+      "path": "runs/vllm_full_test_20261119/se/ground_truth/data-00000-of-00001.arrow",
+      "bytes_before": 118229192,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "c99f512afeb1038a71ce3e3c1d14de8df7fc2225727f4fbce86ea3753153c586",
+      "retained_path": "runs/vllm_full_test_20261119/se/ground_truth/data-00000-of-00001.arrow.gz",
+      "bytes_after": 20550716
+    },
+    {
+      "path": "runs/vllm_full_test_20261119/se/predictions.jsonl",
+      "bytes_before": 121307718,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "b1e2b09125d5f765c39b8b9f7345c318d2e8b25b042a57e3950cbfc523eac89d",
+      "retained_path": "runs/vllm_full_test_20261119/se/predictions.jsonl.gz",
+      "bytes_after": 21919041
+    },
+    {
+      "path": "runs/vllm_full_test_20261119/se/predictions.txt",
+      "bytes_before": 120543108,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "eed655d418e7417da22b461a334e224bc138a22e8eb91bc568715ccdf846a158",
+      "retained_path": "runs/vllm_full_test_20261119/se/predictions.txt.gz",
+      "bytes_after": 21886641
+    },
+    {
+      "path": "runs/vllm_full_test_20261119/se_evaluate.log",
+      "bytes_before": 13221880,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "c17df9ebee3a8af51f4be0ae8dcab5129c68126d6305c38a6df3859134327b26",
+      "retained_path": "runs/vllm_full_test_20261119/se_evaluate.log.gz",
+      "bytes_after": 536789
+    },
+    {
+      "path": "runs/vllm_full_test_20261119/se_infer.log",
+      "bytes_before": 19063240,
+      "action": "gzip_preserve_content",
+      "state": "done",
+      "sha256": "2eb8b10847787aa49dd481c47646eef57806f3181316f6295eb5781ef8d92f95",
+      "retained_path": "runs/vllm_full_test_20261119/se_infer.log.gz",
+      "bytes_after": 1213465
+    },
+    {
+      "path": "runs/readme_check_20261119/environment",
+      "bytes_before": 570186725,
+      "action": "delete_disposable_environment",
+      "state": "done"
+    }
+  ],
+  "completed_at": "2026-11-20 14:14:23",
+  "bytes_reclaimed_estimate": 71834728322
+}

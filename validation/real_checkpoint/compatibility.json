@@ -1,0 +1,15 @@
+{
+  "original_scorer_reproduces_metrics": true,
+  "compared_metric_count": 8,
+  "source": "CLReasoner/test/stat_metrics_scription.py",
+  "metrics": {
+    "prediction_validity_rate": 0.3333333333333333,
+    "accuracy": 0.0,
+    "average_tanimoto": 0.32142857142857145,
+    "valid_smiles": 0.3333333333333333,
+    "accuracy_040": 0.0,
+    "accuracy_060": 0.0,
+    "accuracy_080": 0.0,
+    "accuracy_090": 0.0
+  }
+}

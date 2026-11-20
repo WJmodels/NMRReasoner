@@ -1,0 +1,7 @@
+torch>=2.8
+transformers>=4.56
+datasets>=4.3
+rdkit
+pandas
+tqdm
+accelerate

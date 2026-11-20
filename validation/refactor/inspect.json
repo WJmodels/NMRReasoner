@@ -1,0 +1,29 @@
+{
+  "rows": 22188,
+  "columns": [
+    "question",
+    "cot",
+    "answer"
+  ],
+  "task": "nmr",
+  "checkpoint": "/media/capios/20TB/lln/project/CLReasoner/test/weight/depth1_real_393034/outputs/checkpoint-73698",
+  "config": {
+    "data": "/media/capios/20TB/lln/project/CLReasoner/test/data/40w_solvent_test_22188",
+    "model": "/media/capios/20TB/lln/project/CLReasoner/test/weight/depth1_real_393034",
+    "output": "/media/capios/20TB/lln/project/CLReasoner/runs/validation",
+    "limit": 3,
+    "max_tokens": 5000,
+    "backend": "transformers",
+    "device": "cuda:0",
+    "beam_width": 1,
+    "temperature": 0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "adjust_decimal_places": false,
+    "c_shift_decimal_place": 1,
+    "h_shift_decimal_place": 2,
+    "tensor_parallel_size": 1,
+    "gpu_memory_utilization": 0.7
+  },
+  "first_question": "Formula:C8H8F2O;FW:158.147;HSQC:[MASK];HMBC:[MASK];COSY:[MASK];13C NMR:[NCP:6]66.5,120.0,123.4,128.5,129.7,135.2;1H NMR:[NHP:4](3.98,2,[MASK]),(7.21,1,[MASK]),(7.41,2,[MASK]),(7.59,2,[MASK])"
+}

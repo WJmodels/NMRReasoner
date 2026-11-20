@@ -1,0 +1,76 @@
+[
+  {
+    "task": "ncsp",
+    "phase": "infer",
+    "command": [
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/bin/python",
+      "test.py",
+      "--data",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/data/NMR chemical shift prediction/test/MultiNMR-200k/NCSP_MultiNMR_200k_test_arrow",
+      "--model",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/weight/NMR chemical shift prediction/NCSP-CoT-1_MultiNMR_real200k_weight",
+      "--limit",
+      "1",
+      "--max-tokens",
+      "5000",
+      "--output",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/vllm_bidirectional_20261119/ncsp"
+    ],
+    "returncode": 0,
+    "seconds": 55.385597705841064
+  },
+  {
+    "task": "ncsp",
+    "phase": "evaluate",
+    "command": [
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/bin/python",
+      "test.py",
+      "evaluate",
+      "--data",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/vllm_bidirectional_20261119/ncsp/ground_truth",
+      "--predictions",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/vllm_bidirectional_20261119/ncsp/predictions.txt",
+      "--output",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/vllm_bidirectional_20261119/ncsp/rescored_metrics.json"
+    ],
+    "returncode": 0,
+    "seconds": 7.224064350128174
+  },
+  {
+    "task": "se",
+    "phase": "infer",
+    "command": [
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/bin/python",
+      "test.py",
+      "--data",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/data/Structure elucidation/test/MultiNMR-200k/SE_MultiNMR_200k_test_arrow",
+      "--model",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/weight/Structure elucidation/SE-CoT-1_MultiNMR_real200k_weight",
+      "--limit",
+      "1",
+      "--max-tokens",
+      "5000",
+      "--output",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/vllm_bidirectional_20261119/se"
+    ],
+    "returncode": 0,
+    "seconds": 63.75945734977722
+  },
+  {
+    "task": "se",
+    "phase": "evaluate",
+    "command": [
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/environment/bin/python",
+      "test.py",
+      "evaluate",
+      "--data",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/vllm_bidirectional_20261119/se/ground_truth",
+      "--predictions",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/vllm_bidirectional_20261119/se/predictions.txt",
+      "--output",
+      "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/vllm_bidirectional_20261119/se/rescored_metrics.json"
+    ],
+    "returncode": 0,
+    "seconds": 8.772213697433472
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "data": "/path/to/se_test_arrow",
+  "model": "/path/to/se_model",
+  "output": "runs/validation",
+  "limit": 3,
+  "max_tokens": 5000,
+  "backend": "vllm",
+  "device": "cuda:0"
+}

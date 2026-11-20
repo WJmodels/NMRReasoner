@@ -1,0 +1,29 @@
+test_bad_parameters_are_rejected_before_inference (test_application.ApplicationChecks.test_bad_parameters_are_rejected_before_inference) ... ok
+test_checkpoint_requires_unambiguous_full_weights (test_application.ApplicationChecks.test_checkpoint_requires_unambiguous_full_weights) ... ok
+test_custom_preset_and_cli_precedence (test_application.ApplicationChecks.test_custom_preset_and_cli_precedence) ... ok
+test_data_shards_are_sorted_and_schema_checked (test_application.ApplicationChecks.test_data_shards_are_sorted_and_schema_checked) ... Saving the dataset (0/1 shards):   0%|          | 0/1 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 1/1 [00:00<00:00, 242.81 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 1/1 [00:00<00:00, 228.19 examples/s]
+Saving the dataset (0/1 shards):   0%|          | 0/1 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 1/1 [00:00<00:00, 288.96 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 1/1 [00:00<00:00, 273.48 examples/s]
+ok
+test_evaluate_and_vote_reject_misaligned_predictions (test_application.ApplicationChecks.test_evaluate_and_vote_reject_misaligned_predictions) ... Saving the dataset (0/1 shards):   0%|          | 0/2 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 2/2 [00:00<00:00, 687.42 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 2/2 [00:00<00:00, 646.27 examples/s]
+ok
+test_help_works_without_site_packages (test_application.ApplicationChecks.test_help_works_without_site_packages) ... ok
+test_missing_assets_have_concise_cli_error (test_application.ApplicationChecks.test_missing_assets_have_concise_cli_error) ... ok
+test_prediction_formats_preserve_newlines_and_smiles_backslashes (test_application.ApplicationChecks.test_prediction_formats_preserve_newlines_and_smiles_backslashes) ... ok
+test_preset_paths_do_not_depend_on_working_directory (test_application.ApplicationChecks.test_preset_paths_do_not_depend_on_working_directory) ... ok
+test_training_restores_directory_and_environment_on_failure (test_application.ApplicationChecks.test_training_restores_directory_and_environment_on_failure) ... ok
+test_answer_extraction (test_workflow.ChemistryChecks.test_answer_extraction) ... ok
+test_canonicalization (test_workflow.ChemistryChecks.test_canonicalization) ... [11:50:50] SMILES Parse Error: syntax error while parsing: invalid!
+[11:50:50] SMILES Parse Error: check for mistakes around position 1:
+[11:50:50] invalid!
+[11:50:50] ^
+[11:50:50] SMILES Parse Error: Failed parsing SMILES 'invalid!' for input: 'invalid!'
+ok
+test_prompt_compatibility (test_workflow.ChemistryChecks.test_prompt_compatibility) ... ok
+test_spectral_metrics (test_workflow.ChemistryChecks.test_spectral_metrics) ... ok
+test_task_scope (test_workflow.ChemistryChecks.test_task_scope) ... ok
+test_training_import_has_no_side_effects (test_workflow.ChemistryChecks.test_training_import_has_no_side_effects) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 1.440s
+
+OK

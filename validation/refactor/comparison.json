@@ -1,0 +1,24 @@
+{
+  "predictions_jsonl_identical": true,
+  "predictions_txt_identical": true,
+  "metrics_identical": true,
+  "generation_diagnostics_identical": true,
+  "dataset_rows": 22188,
+  "evaluated_rows": 3,
+  "before_elapsed_seconds": 110.12610292434692,
+  "after_elapsed_seconds": 107.9175181388855,
+  "complete_answer_count": 3,
+  "metrics": {
+    "prediction_validity_rate": 0.6666666666666666,
+    "accuracy": 0.0,
+    "average_tanimoto": 0.21334586466165414,
+    "valid_smiles": 0.6666666666666666,
+    "accuracy_040": 0.0,
+    "accuracy_060": 0.0,
+    "accuracy_080": 0.0,
+    "accuracy_090": 0.0
+  },
+  "rescore_identical": true,
+  "vote_metrics_identical": true,
+  "vote_results_identical": true
+}

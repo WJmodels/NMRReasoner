@@ -1,0 +1,57 @@
+{
+  "spectroscopy/scoring.py": {
+    "identical_ast": true,
+    "before_sha256": "d7416f8dd6681ef8a9f9609ab0dde5f67488fe34775173b09593eb6286aa159c",
+    "after_sha256": "d7416f8dd6681ef8a9f9609ab0dde5f67488fe34775173b09593eb6286aa159c"
+  },
+  "spectroscopy/voting.py": {
+    "identical_ast": true,
+    "before_sha256": "2bdd29af439ac6a9a4f52b4351949079572414102b495c4e374c2d524eba9ad5",
+    "after_sha256": "2bdd29af439ac6a9a4f52b4351949079572414102b495c4e374c2d524eba9ad5"
+  },
+  "spectroscopy/decoding.py": {
+    "identical_ast": true,
+    "before_sha256": "ec239987ec6b8c12a131ec1e1bf5bca4f9cd07ad0e8b0f4c5e88ce6891586b9e",
+    "after_sha256": "5d0240decbb954d11b0c23df8a0d8bd6a4a043a9d36b3d831c3d6d3ec898fdde"
+  },
+  "experiments/fit.py": {
+    "identical_ast_after_inlining_settings": true,
+    "training_defaults": {
+      "MAX_SEQ_LENGTH": 5000,
+      "GRADIENT_ACCUMULATION_STEPS": 4,
+      "MAX_GRAD_NORM": 0.15,
+      "WARMUP_STEPS": 5,
+      "LEARNING_RATE": 0.0002,
+      "WEIGHT_DECAY": 0.01,
+      "SAVE_STEPS": 8000,
+      "SAVE_TOTAL_LIMIT": 300,
+      "FULL_FINETUNING": true,
+      "LOAD_IN_4BIT": false,
+      "LOAD_IN_8BIT": false,
+      "LORA_R": 512,
+      "LORA_ALPHA": 2048,
+      "LORA_DROPOUT": 0,
+      "LORA_TARGET_MODULES": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj",
+        "gate_proj",
+        "up_proj",
+        "down_proj"
+      ],
+      "TRAIN_PROMPT_STYLE": "{}<think>{}</think><answer>{}</answer>"
+    }
+  },
+  "generate_transformers": {
+    "generation_branch_ast_identical": true
+  },
+  "generate_vllm": {
+    "generation_branch_ast_identical": true
+  },
+  "path_migration": {
+    "preset_assets_relative_to": "config file directory",
+    "cli_paths_and_output_relative_to": "working directory",
+    "historical_records_preserved": true
+  }
+}

@@ -1,0 +1,43 @@
+Saving the dataset (0/1 shards):   0%|          | 0/3 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 3/3 [00:00<00:00, 635.53 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 3/3 [00:00<00:00, 604.51 examples/s]
+Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
+/home/capios/anaconda3/envs/qwen3_unsloth/lib/python3.12/site-packages/transformers/generation/configuration_utils.py:631: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/home/capios/anaconda3/envs/qwen3_unsloth/lib/python3.12/site-packages/transformers/generation/configuration_utils.py:636: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.95` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+Generated 1/3: {'index': 0, 'input_tokens': 131, 'generated_tokens': 1066, 'has_answer': True, 'reached_token_limit': False}
+Generated 2/3: {'index': 1, 'input_tokens': 318, 'generated_tokens': 1371, 'has_answer': True, 'reached_token_limit': False}
+Generated 3/3: {'index': 2, 'input_tokens': 125, 'generated_tokens': 432, 'has_answer': True, 'reached_token_limit': False}
+[11:46:45] DEPRECATION WARNING: please use MorganGenerator
+[11:46:45] DEPRECATION WARNING: please use MorganGenerator
+[11:46:45] DEPRECATION WARNING: please use MorganGenerator
+[11:46:45] DEPRECATION WARNING: please use MorganGenerator
+[11:46:45] SMILES Parse Error: syntax error while parsing: C(C)c1ccc(:2)C1OP(=S)O
+[11:46:45] SMILES Parse Error: check for mistakes around position 12:
+[11:46:45] C(C)c1ccc(:2)C1OP(=S)O
+[11:46:45] ~~~~~~~~~~~^
+[11:46:45] SMILES Parse Error: Failed parsing SMILES 'C(C)c1ccc(:2)C1OP(=S)O' for input: 'C(C)c1ccc(:2)C1OP(=S)O'
+[11:46:45] SMILES Parse Error: syntax error while parsing: C(C)c1ccc(:2)C1OP(=S)O
+[11:46:45] SMILES Parse Error: check for mistakes around position 12:
+[11:46:45] C(C)c1ccc(:2)C1OP(=S)O
+[11:46:45] ~~~~~~~~~~~^
+[11:46:45] SMILES Parse Error: Failed parsing SMILES 'C(C)c1ccc(:2)C1OP(=S)O' for input: 'C(C)c1ccc(:2)C1OP(=S)O'
+正在加载数据: /media/capios/20TB/lln/project/CLReasoner/NMRReasoner/validation/refactor/before/ground_truth
+正在加载arrow文件: /media/capios/20TB/lln/project/CLReasoner/NMRReasoner/validation/refactor/before/ground_truth/data-00000-of-00001.arrow
+已成功合并 1 个arrow文件，总样本数: 3
+检测到任务类型: nmr
+正在加载预测结果: /media/capios/20TB/lln/project/CLReasoner/NMRReasoner/validation/refactor/before/predictions.txt
+
+==================================================
+任务类型: NMR
+==================================================
+prediction_validity_rate: 0.6667
+accuracy: 0.0000
+average_tanimoto: 0.2133
+valid_smiles: 0.6667
+accuracy_040: 0.0000
+accuracy_060: 0.0000
+accuracy_080: 0.0000
+accuracy_090: 0.0000
+==================================================
+
+Results: /media/capios/20TB/lln/project/CLReasoner/NMRReasoner/validation/refactor/before

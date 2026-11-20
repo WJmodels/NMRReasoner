@@ -1,0 +1,50 @@
+{
+  "ncsp": {
+    "model": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/weight/NMR chemical shift prediction/NCSP-CoT-1_MultiNMR_real200k_weight",
+    "data": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/data/NMR chemical shift prediction/test/MultiNMR-200k/NCSP_MultiNMR_200k_test_arrow",
+    "elapsed_seconds": 9737.146636009216,
+    "prediction_rows": 54615,
+    "has_answer": 54597,
+    "answer_complete": 54525,
+    "metrics": {
+      "total_samples": 54615,
+      "valid_samples_for_deta_13c_count": 54556,
+      "valid_samples_for_deta_1h_count": 54556,
+      "valid_samples_for_error_metrics": 16015,
+      "average_deta_13C_nmr_shift_count": -0.062321284551653346,
+      "average_deta_1H_nmr_shift_count": -3.0349182491385,
+      "average_cot_13c_tanimoto": 0.7025655236456865,
+      "average_cot_1h_tanimoto": 0.6455824946977358,
+      "average_cot_brics_tanimoto": 0.0,
+      "average_cot_13c_accuracy": 0.47779165093465475,
+      "average_cot_1h_accuracy": 0.4496201737551307,
+      "average_cot_brics_accuracy": 0.0,
+      "average_mae_zero_padding_13C_nmr_shift": 3.472674232547064,
+      "average_mae_zero_padding_1H_nmr_shift": 0.2290922242128777,
+      "average_mse_zero_padding_13C_nmr_shift": 39.33750476222958,
+      "average_mse_zero_padding_1H_nmr_shift": 0.1241579759369134,
+      "average_rmsd_zero_padding_13C_nmr_shift": 4.961662971955675,
+      "average_rmsd_zero_padding_1H_nmr_shift": 0.2930156732198596
+    },
+    "independent_rescore_matches": true
+  },
+  "se": {
+    "model": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/weight/Structure elucidation/SE-CoT-1_MultiNMR_real200k_weight",
+    "data": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/data/Structure elucidation/test/MultiNMR-200k/SE_MultiNMR_200k_test_arrow",
+    "elapsed_seconds": 10591.683704137802,
+    "prediction_rows": 54615,
+    "has_answer": 54409,
+    "answer_complete": 54385,
+    "metrics": {
+      "prediction_validity_rate": 0.8788244987640758,
+      "accuracy": 0.0759864506088071,
+      "average_tanimoto": 0.344502582703553,
+      "valid_smiles": 0.8788244987640758,
+      "accuracy_040": 0.23209740913668406,
+      "accuracy_060": 0.11906985260459581,
+      "accuracy_080": 0.08457383502700723,
+      "accuracy_090": 0.07876956879978028
+    },
+    "independent_rescore_matches": true
+  }
+}

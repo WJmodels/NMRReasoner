@@ -1,0 +1,34 @@
+[11:51:47] DEPRECATION WARNING: please use MorganGenerator
+[11:51:47] DEPRECATION WARNING: please use MorganGenerator
+[11:51:47] DEPRECATION WARNING: please use MorganGenerator
+[11:51:47] DEPRECATION WARNING: please use MorganGenerator
+[11:51:47] SMILES Parse Error: syntax error while parsing: C(C)c1ccc(:2)C1OP(=S)O
+[11:51:47] SMILES Parse Error: check for mistakes around position 12:
+[11:51:47] C(C)c1ccc(:2)C1OP(=S)O
+[11:51:47] ~~~~~~~~~~~^
+[11:51:47] SMILES Parse Error: Failed parsing SMILES 'C(C)c1ccc(:2)C1OP(=S)O' for input: 'C(C)c1ccc(:2)C1OP(=S)O'
+[11:51:47] SMILES Parse Error: syntax error while parsing: C(C)c1ccc(:2)C1OP(=S)O
+[11:51:47] SMILES Parse Error: check for mistakes around position 12:
+[11:51:47] C(C)c1ccc(:2)C1OP(=S)O
+[11:51:47] ~~~~~~~~~~~^
+[11:51:47] SMILES Parse Error: Failed parsing SMILES 'C(C)c1ccc(:2)C1OP(=S)O' for input: 'C(C)c1ccc(:2)C1OP(=S)O'
+正在加载数据: /media/capios/20TB/lln/project/CLReasoner/NMRReasoner/validation/refactor/after/ground_truth
+正在加载arrow文件: /media/capios/20TB/lln/project/CLReasoner/NMRReasoner/validation/refactor/after/ground_truth/data-00000-of-00001.arrow
+已成功合并 1 个arrow文件，总样本数: 3
+检测到任务类型: nmr
+正在加载预测结果: /media/capios/20TB/lln/project/CLReasoner/NMRReasoner/validation/refactor/after/predictions.txt
+
+==================================================
+任务类型: NMR
+==================================================
+prediction_validity_rate: 0.6667
+accuracy: 0.0000
+average_tanimoto: 0.2133
+valid_smiles: 0.6667
+accuracy_040: 0.0000
+accuracy_060: 0.0000
+accuracy_080: 0.0000
+accuracy_090: 0.0000
+==================================================
+
+Metrics: /media/capios/20TB/lln/project/CLReasoner/NMRReasoner/validation/refactor/rescore.json

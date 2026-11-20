@@ -1,0 +1,1 @@
+The original trainer API silently used max_length=1024 under TRL 0.23. Stopped the remaining pre-fix validation and reran both tasks using SFTConfig with max_length=5000. See training_fixed_commands.json.

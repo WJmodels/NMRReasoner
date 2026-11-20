@@ -1,0 +1,60 @@
+{
+  "project": "NMRReasoner",
+  "task": "nmr_forward",
+  "model": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/ncsp/training_fixed/final_model",
+  "data": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/ncsp/arrow/test",
+  "dataset_rows": 3,
+  "evaluated_rows": 1,
+  "backend": "transformers",
+  "torch": "2.8.0+cu128",
+  "transformers": "4.56.2",
+  "config": {
+    "data": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/ncsp/arrow/test",
+    "model": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/ncsp/training_fixed/final_model",
+    "output": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/ncsp/trained_inference_fixed",
+    "limit": 1,
+    "max_tokens": 5000,
+    "backend": "transformers",
+    "device": "cuda:0",
+    "beam_width": 1,
+    "temperature": 0,
+    "top_p": 0.95,
+    "top_k": 20,
+    "adjust_decimal_places": false,
+    "c_shift_decimal_place": 1,
+    "h_shift_decimal_place": 2,
+    "tensor_parallel_size": 1,
+    "gpu_memory_utilization": 0.7
+  },
+  "elapsed_seconds": 27.114455938339233,
+  "generation": [
+    {
+      "index": 0,
+      "input_tokens": 25,
+      "generated_tokens": 621,
+      "has_answer": true,
+      "answer_complete": true,
+      "reached_token_limit": false
+    }
+  ],
+  "metrics": {
+    "total_samples": 1,
+    "valid_samples_for_deta_13c_count": 0,
+    "valid_samples_for_deta_1h_count": 0,
+    "valid_samples_for_error_metrics": 0,
+    "average_deta_13C_nmr_shift_count": 0.0,
+    "average_deta_1H_nmr_shift_count": 0.0,
+    "average_cot_13c_tanimoto": 0.3842950513538749,
+    "average_cot_1h_tanimoto": 0.7142857142857143,
+    "average_cot_brics_tanimoto": 0.0,
+    "average_cot_13c_accuracy": 0.0,
+    "average_cot_1h_accuracy": 0.0,
+    "average_cot_brics_accuracy": 0.0,
+    "average_mae_zero_padding_13C_nmr_shift": 0.0,
+    "average_mae_zero_padding_1H_nmr_shift": 0.0,
+    "average_mse_zero_padding_13C_nmr_shift": 0.0,
+    "average_mse_zero_padding_1H_nmr_shift": 0.0,
+    "average_rmsd_zero_padding_13C_nmr_shift": 0.0,
+    "average_rmsd_zero_padding_1H_nmr_shift": 0.0
+  }
+}

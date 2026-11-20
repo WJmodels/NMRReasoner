@@ -1,0 +1,32 @@
+{
+  "requested": {
+    "data": "/home/sunhnayu/lln/project/deepseek/data/40w/solvent/all_cot/40w_solvent_test_22188",
+    "model": "/home/sunhnayu/lln/project/deepseek/test/weight/nmr/solvent/40w_solvent_best/depth1_real_393034"
+  },
+  "resolved": {
+    "data": "/home/wanglab/lln/project/CLReasoner/test/data/40w_solvent_test_22188",
+    "model": "/home/wanglab/lln/project/CLReasoner/test/weight/depth1_real_393034/outputs/checkpoint-73698"
+  },
+  "note": "Requested /home/sunhnayu paths do not exist on this machine. Used same-named local dataset/checkpoint assets; identity with the unavailable paths cannot be independently established.",
+  "files": [
+    {
+      "path": "/home/wanglab/lln/project/CLReasoner/test/data/40w_solvent_test_22188/data-00000-of-00001.arrow",
+      "bytes": 36521728,
+      "sha256": "63c8f60171ca121bc98404cb35b3e80b1ef12ab2f4b0a29ed0a8d0813ea7d29b"
+    },
+    {
+      "path": "/home/wanglab/lln/project/CLReasoner/test/weight/depth1_real_393034/outputs/checkpoint-73698/config.json",
+      "bytes": 762,
+      "sha256": "cc1f9a29a03991ad5ad7567198c729cfc2ceebc21d767959b7c5a1bd092747ba"
+    },
+    {
+      "path": "/home/wanglab/lln/project/CLReasoner/test/weight/depth1_real_393034/outputs/checkpoint-73698/tokenizer_config.json",
+      "bytes": 6782,
+      "sha256": "cfb5a376af986b890d28ebf8978653e3192838c605cf3232666cc2daaee4b768"
+    },
+    {
+      "path": "/home/wanglab/lln/project/CLReasoner/test/weight/depth1_real_393034/outputs/checkpoint-73698/model.safetensors",
+      "bytes": 3554214752
+    }
+  ]
+}

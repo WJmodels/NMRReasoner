@@ -1,0 +1,32 @@
+{
+  "se_train": {
+    "source": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/data/Structure elucidation/train/MultiNMR-200k/SE-CoT-1_MultiNMR_200k_train_arrow",
+    "total_rows": 197982,
+    "selected_rows": 4
+  },
+  "se_test": {
+    "source": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/data/Structure elucidation/test/MultiNMR-200k/SE_MultiNMR_200k_test_arrow",
+    "total_rows": 54615,
+    "selected_rows": 3
+  },
+  "ncsp_train": {
+    "source": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/data/NMR chemical shift prediction/train/MultiNMR-200k/NCSP-CoT-1_MultiNMR_200k_train_arrow",
+    "total_rows": 395964,
+    "selected_rows": 4
+  },
+  "ncsp_test": {
+    "source": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/data/NMR chemical shift prediction/test/MultiNMR-200k/NCSP_MultiNMR_200k_test_arrow",
+    "total_rows": 54615,
+    "selected_rows": 3
+  },
+  "se_train8": {
+    "source": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/data/Structure elucidation/train/MultiNMR-200k/SE-CoT-1_MultiNMR_200k_train_arrow",
+    "selected_rows": 8,
+    "purpose": "two optimizer steps, including nonzero learning rate after initial warmup step"
+  },
+  "ncsp_train8": {
+    "source": "/media/capios/20TB/lln/project/CLReasoner/NMRReasoner/data/NMR chemical shift prediction/train/MultiNMR-200k/NCSP-CoT-1_MultiNMR_200k_train_arrow",
+    "selected_rows": 8,
+    "purpose": "two optimizer steps, including nonzero learning rate after initial warmup step"
+  }
+}

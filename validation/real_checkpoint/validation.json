@@ -1,0 +1,54 @@
+{
+  "project": "NMRReasoner",
+  "task": "nmr",
+  "model": "/home/wanglab/lln/project/CLReasoner/test/weight/depth1_real_393034/outputs/checkpoint-73698",
+  "data": "/home/wanglab/lln/project/CLReasoner/test/data/40w_solvent_test_22188",
+  "dataset_rows": 22188,
+  "evaluated_rows": 3,
+  "backend": "transformers",
+  "torch": "2.10.0+cu128",
+  "transformers": "5.2.0",
+  "config": {
+    "data": "/home/wanglab/lln/project/CLReasoner/test/data/40w_solvent_test_22188",
+    "model": "/home/wanglab/lln/project/CLReasoner/test/weight/depth1_real_393034",
+    "output": "NMRReasoner/validation/real_checkpoint",
+    "limit": 3,
+    "max_tokens": 5000,
+    "backend": "transformers",
+    "device": "cuda:0"
+  },
+  "elapsed_seconds": 60.59748315811157,
+  "generation": [
+    {
+      "index": 0,
+      "input_tokens": 131,
+      "generated_tokens": 1068,
+      "has_answer": true,
+      "reached_token_limit": false
+    },
+    {
+      "index": 1,
+      "input_tokens": 318,
+      "generated_tokens": 1371,
+      "has_answer": true,
+      "reached_token_limit": false
+    },
+    {
+      "index": 2,
+      "input_tokens": 125,
+      "generated_tokens": 432,
+      "has_answer": true,
+      "reached_token_limit": false
+    }
+  ],
+  "metrics": {
+    "prediction_validity_rate": 0.3333333333333333,
+    "accuracy": 0.0,
+    "average_tanimoto": 0.32142857142857145,
+    "valid_smiles": 0.3333333333333333,
+    "accuracy_040": 0.0,
+    "accuracy_060": 0.0,
+    "accuracy_080": 0.0,
+    "accuracy_090": 0.0
+  }
+}

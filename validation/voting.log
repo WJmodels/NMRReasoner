@@ -1,0 +1,39 @@
+[17:45:19] SMILES Parse Error: syntax error while parsing: O=C[/HF>C>C(F)(F)C(F)(F)C(F)(F)C
+[17:45:19] SMILES Parse Error: check for mistakes around position 5:
+[17:45:19] O=C[/HF>C>C(F)(F)C(F)(F)C(F)(F)C
+[17:45:19] ~~~~^
+[17:45:19] SMILES Parse Error: Failed parsing SMILES 'O=C[/HF>C>C(F)(F)C(F)(F)C(F)(F)C' for input: 'O=C[/HF>C>C(F)(F)C(F)(F)C(F)(F)C'
+[17:45:19] SMILES Parse Error: syntax error while parsing: C(C)c1ccc(:2)C1OP(=S)O
+[17:45:19] SMILES Parse Error: check for mistakes around position 12:
+[17:45:19] C(C)c1ccc(:2)C1OP(=S)O
+[17:45:19] ~~~~~~~~~~~^
+[17:45:19] SMILES Parse Error: Failed parsing SMILES 'C(C)c1ccc(:2)C1OP(=S)O' for input: 'C(C)c1ccc(:2)C1OP(=S)O'
+[17:45:19] SMILES Parse Error: syntax error while parsing: O=C[/HF>C>C(F)(F)C(F)(F)C(F)(F)C
+[17:45:19] SMILES Parse Error: check for mistakes around position 5:
+[17:45:19] O=C[/HF>C>C(F)(F)C(F)(F)C(F)(F)C
+[17:45:19] ~~~~^
+[17:45:19] SMILES Parse Error: Failed parsing SMILES 'O=C[/HF>C>C(F)(F)C(F)(F)C(F)(F)C' for input: 'O=C[/HF>C>C(F)(F)C(F)(F)C(F)(F)C'
+[17:45:19] SMILES Parse Error: syntax error while parsing: C(C)c1ccc(:2)C1OP(=S)O
+[17:45:19] SMILES Parse Error: check for mistakes around position 12:
+[17:45:19] C(C)c1ccc(:2)C1OP(=S)O
+[17:45:19] ~~~~~~~~~~~^
+[17:45:19] SMILES Parse Error: Failed parsing SMILES 'C(C)c1ccc(:2)C1OP(=S)O' for input: 'C(C)c1ccc(:2)C1OP(=S)O'
+================================================================================
+Starting Multi-Model Self-Consistency Voting Pipeline
+================================================================================
+Loading arrow file: NMRReasoner/validation/real_checkpoint/ground_truth/data-00000-of-00001.arrow
+Successfully merged 1 files. Total samples: 3, Task: nmr
+Extracting and filtering answers (Strict & Relaxed)...
+Self-Consistency Parallel Execution:   0%|          | 0/3 [00:00<?, ?it/s]Self-Consistency Parallel Execution: 100%|██████████| 3/3 [00:00<00:00, 633.26it/s]
+[17:45:19] DEPRECATION WARNING: please use MorganGenerator
+[17:45:19] DEPRECATION WARNING: please use MorganGenerator
+[17:45:19] DEPRECATION WARNING: please use MorganGenerator
+[17:45:19] DEPRECATION WARNING: please use MorganGenerator
+
+Final Averaged Metrics:
+  prediction_validity_rate: 0.3333
+  accuracy: 0.0000
+  average_tanimoto: 0.1071
+  top1: 0.0000
+  top2: 0.0000
+  top3: 0.0000

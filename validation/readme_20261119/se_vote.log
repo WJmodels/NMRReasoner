@@ -1,0 +1,49 @@
+[14:37:20] Can't kekulize mol.  Unkekulized atoms: 3 4 5 6 7 8 9 10 18
+[14:37:20] Can't kekulize mol.  Unkekulized atoms: 3 4 5 6 7 8 9 10 18
+[14:37:20] SMILES Parse Error: extra open parentheses while parsing: CC1NC(=C2C=C(C(C)SC3=NC(c4ccccc4)=C4C=CN2C(C(=O)OC(C)(C)C)C43)C(C)N1C(=O)c1ccccc1
+[14:37:20] SMILES Parse Error: check for mistakes around position 6:
+[14:37:20] CC1NC(=C2C=C(C(C)SC3=NC(c4ccccc4)=C4C=CN2
+[14:37:20] ~~~~~^
+[14:37:20] SMILES Parse Error: Failed parsing SMILES 'CC1NC(=C2C=C(C(C)SC3=NC(c4ccccc4)=C4C=CN2C(C(=O)OC(C)(C)C)C43)C(C)N1C(=O)c1ccccc1' for input: 'CC1NC(=C2C=C(C(C)SC3=NC(c4ccccc4)=C4C=CN2C(C(=O)OC(C)(C)C)C43)C(C)N1C(=O)c1ccccc1'
+[14:37:20] Can't kekulize mol.  Unkekulized atoms: 3 4 5 6 7 8 9 10 18
+[14:37:20] Can't kekulize mol.  Unkekulized atoms: 3 4 5 6 7 8 9 10 18
+[14:37:20] SMILES Parse Error: extra open parentheses while parsing: CC1NC(=C2C=C(C(C)SC3=NC(c4ccccc4)=C4C=CN2C(C(=O)OC(C)(C)C)C43)C(C)N1C(=O)c1ccccc1
+[14:37:20] SMILES Parse Error: check for mistakes around position 6:
+[14:37:20] CC1NC(=C2C=C(C(C)SC3=NC(c4ccccc4)=C4C=CN2
+[14:37:20] ~~~~~^
+[14:37:20] SMILES Parse Error: Failed parsing SMILES 'CC1NC(=C2C=C(C(C)SC3=NC(c4ccccc4)=C4C=CN2C(C(=O)OC(C)(C)C)C43)C(C)N1C(=O)c1ccccc1' for input: 'CC1NC(=C2C=C(C(C)SC3=NC(c4ccccc4)=C4C=CN2C(C(=O)OC(C)(C)C)C43)C(C)N1C(=O)c1ccccc1'
+[14:37:20] Can't kekulize mol.  Unkekulized atoms: 3 4 5 6 7 8 9 10 18
+[14:37:20] Can't kekulize mol.  Unkekulized atoms: 3 4 5 6 7 8 9 10 18
+[14:37:20] SMILES Parse Error: unclosed ring for input: 'C(C)(C)c1oc(=O)c2SC(=S)c3ccccc32'
+[14:37:20] SMILES Parse Error: unclosed ring for input: 'C(C)(C)c1oc(=O)c2SC(=S)c3cc4ccccc4c32'
+[14:37:20] Can't kekulize mol.  Unkekulized atoms: 3 4 5 6 7 8 9 10 18
+[14:37:20] Can't kekulize mol.  Unkekulized atoms: 3 4 5 6 7 8 9 10 18
+[14:37:20] SMILES Parse Error: unclosed ring for input: 'C(C)(C)c1oc(=O)c2SC(=S)c3ccccc32'
+[14:37:20] SMILES Parse Error: unclosed ring for input: 'C(C)(C)c1oc(=O)c2SC(=S)c3cc4ccccc4c32'
+================================================================================
+Starting Multi-Model Self-Consistency Voting Pipeline
+================================================================================
+Loading arrow file: /media/capios/20TB/lln/project/CLReasoner/NMRReasoner/runs/readme_check_20261119/se/inference/ground_truth/data-00000-of-00001.arrow
+Successfully merged 1 files. Total samples: 3, Task: nmr
+Extracting and filtering answers (Strict & Relaxed)...
+Self-Consistency Parallel Execution:   0%|          | 0/3 [00:00<?, ?it/s]Self-Consistency Parallel Execution: 100%|██████████| 3/3 [00:00<00:00, 737.14it/s]
+[14:37:20] DEPRECATION WARNING: please use MorganGenerator
+[14:37:20] DEPRECATION WARNING: please use MorganGenerator
+[14:37:20] DEPRECATION WARNING: please use MorganGenerator
+[14:37:20] DEPRECATION WARNING: please use MorganGenerator
+[14:37:20] DEPRECATION WARNING: please use MorganGenerator
+
+Final Averaged Metrics:
+  prediction_validity_rate: 0.6667
+  accuracy: 0.0000
+  average_tanimoto: 0.1046
+  top1: 0.0000
+  top2: 0.0000
+  top3: 0.0000
+  top4: 0.0000
+  top5: 0.0000
+  top6: 0.0000
+  top7: 0.0000
+  top8: 0.0000
+  top9: 0.0000
+  top10: 0.0000

@@ -1,0 +1,16 @@
+test_answer_extraction (test_workflow.ChemistryChecks.test_answer_extraction) ... ok
+test_canonicalization (test_workflow.ChemistryChecks.test_canonicalization) ... [17:43:40] SMILES Parse Error: syntax error while parsing: invalid!
+[17:43:40] SMILES Parse Error: check for mistakes around position 1:
+[17:43:40] invalid!
+[17:43:40] ^
+[17:43:40] SMILES Parse Error: Failed parsing SMILES 'invalid!' for input: 'invalid!'
+ok
+test_prompt_compatibility (test_workflow.ChemistryChecks.test_prompt_compatibility) ... ok
+test_spectral_metrics (test_workflow.ChemistryChecks.test_spectral_metrics) ... ok
+test_task_scope (test_workflow.ChemistryChecks.test_task_scope) ... ok
+test_training_import_has_no_side_effects (test_workflow.ChemistryChecks.test_training_import_has_no_side_effects) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.005s
+
+OK
